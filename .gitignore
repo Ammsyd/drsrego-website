@@ -1,0 +1,37 @@
+# --- Operating system files ---
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Secrets / environment (never commit) ---
+.env
+.env.*
+
+# --- Python (image-processing scripts) ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Node (if tooling is ever added) ---
+node_modules/
+npm-debug.log*
+
+# --- Netlify local CLI state ---
+.netlify/
+
+# --- Logs & temp files ---
+*.log
+*.tmp
+
+# --- Claude Code: personal, machine-specific settings ---
+.claude/settings.local.json

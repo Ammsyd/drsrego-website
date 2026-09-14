@@ -1,0 +1,28 @@
+PHOTO CREDITS — Drs Rego website
+=================================
+
+All photographs are sourced from Unsplash (unsplash.com) and used under the
+Unsplash Licence (https://unsplash.com/license) — free for commercial use,
+no attribution required (though attribution is appreciated by photographers).
+
+Each processed image below is derived from the Unsplash original listed with
+it. To view the photo page and photographer profile, open the source URL in a
+browser — Unsplash redirects the image URL to its photo page when you search
+the photo ID at unsplash.com.
+
+File (basename)      Unsplash photo ID / source URL
+-------------------  ---------------------------------------------------------
+hero-consult         https://images.unsplash.com/photo-1666214280557-f1b5022eb634
+doctor-phone         https://images.unsplash.com/photo-1576091160399-112ba8d25d1d
+doctor-portrait      https://images.unsplash.com/photo-1622253692010-333f2da6031d
+clinic-interior      https://images.unsplash.com/photo-1629909613654-28e377c37b09  (no longer in use; kept as spare)
+clinic-meeting       https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0
+clinic-team          https://images.unsplash.com/photo-1580281657527-47f249e8f4df
+outback-road         https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8
+team-meeting         https://images.unsplash.com/photo-1521737711867-e3b97375f902
+docs-signing         https://images.unsplash.com/photo-1450101499163-c8848c66ca85
+desk-laptop          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
+desk-writing         https://images.unsplash.com/photo-1434030216411-0b793f4b4173
+
+Originals are kept in assets/img/src/. Responsive variants (480/960/1600px,
+WebP + JPEG) were generated at quality 78.
