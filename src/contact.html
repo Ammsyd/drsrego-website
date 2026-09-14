@@ -1,0 +1,107 @@
+---
+layout: layouts/base.njk
+title: Contact a Medical Registration Consultant
+description: Enquire about AHPRA registration, PESCI, supervision plans or clinic compliance. Tell us where you are in the process. We reply within two business days.
+permalink: contact.html
+navSection: contact
+breadcrumb:
+  name: Contact
+image: /assets/img/desk-laptop-1600.jpg
+imageWidth: 1600
+imageHeight: 1068
+imageAlt: Hands working across laptops and application paperwork
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h1>Contact a medical registration consultant.</h1>
+        <p class="lede">Tell us where you are in the process, whether you are a doctor seeking AHPRA registration or a practice preparing for an IMG hire. We reply within two business days.</p>
+      </div>
+    </section>
+
+    <!-- ================= ENQUIRY FORM ================= -->
+    <section class="section" aria-label="Enquiry form">
+      <div class="container">
+        <!--
+          FORM: Netlify Forms (active once the site is deployed on Netlify):
+          Netlify detects this form at deploy time via the data-netlify attribute.
+          After the first deploy: Netlify dashboard → Forms → confirm the "enquiry"
+          form is listed, then Form notifications → send submissions to
+          info@drsrego.com.au.
+          The hidden "bot-field" input is a spam honeypot; successful submissions
+          redirect to /thank-you.html.
+          NOTE: if this site is ever moved off Netlify, this form will stop
+          capturing submissions; reconnect it to a form service (e.g. Formspree).
+        -->
+        <form id="enquiry-form" class="form-grid" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" data-validate novalidate>
+          <input type="hidden" name="form-name" value="enquiry">
+          <input type="hidden" name="topic" value="">
+          <input type="hidden" name="job" value="">
+          <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+          <p class="form-required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+          <p class="notice" data-job-note hidden>You are asking about the role: <strong data-job-slot></strong>. We will check your section 19AB position against that location before replying.</p>
+          <div class="field">
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" aria-describedby="name-error" autocomplete="name" required>
+            <p class="error-message" id="name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" aria-describedby="email-error" autocomplete="email" inputmode="email" required>
+            <p class="error-message" id="email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span class="hint">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel">
+          </div>
+
+          <div class="field">
+            <label for="role">I am a&hellip; <span aria-hidden="true">*</span></label>
+            <select id="role" name="role" aria-describedby="role-error" required>
+              <option value="">Please select</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Clinic or practice manager">Clinic or practice manager</option>
+              <option value="Referral partner">Referral partner</option>
+              <option value="Other">Other</option>
+            </select>
+            <p class="error-message" id="role-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Where are you in the process? <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" aria-describedby="message-error" required></textarea>
+            <p class="error-message" id="message-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <div class="field-checkbox">
+              <input type="checkbox" id="consent" name="consent" aria-describedby="consent-error" required data-error="Please tick this box so we can respond to your enquiry.">
+              <label for="consent">I consent to Drs Rego collecting the details above to respond to my enquiry, as described in the <a href="/privacy.html">Privacy Policy</a>. I can withdraw this consent or unsubscribe at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. <span aria-hidden="true">*</span></label>
+            </div>
+            <p class="error-message" id="consent-error" role="alert"></p>
+          </div>
+
+          <div>
+            <button type="submit" class="btn">Send enquiry <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= CALENDLY (secondary) ================= -->
+    <section class="section" aria-label="Book a call">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Prefer to talk?</span>
+          <h2>Book a time that suits you.</h2>
+        </div>
+
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/drsrego-info/30min?text_color=141b2e&amp;primary_color=2b4eff" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+      </div>
+    </section>

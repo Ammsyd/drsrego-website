@@ -1,0 +1,5 @@
+# Netlify redirects. One rule per line: from  to  status
+# The pre-launch form pointed at /thanks.html; send anyone who still has it to the real page.
+/thanks.html   /thank-you.html   301
+# /index.html and / are the same page; keep one address for search engines.
+/index.html    /                 301

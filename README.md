@@ -1,145 +1,79 @@
-# Drs Rego — website
+# Drs Rego website
 
-A complete static website. No frameworks, no build step — plain HTML, one CSS
-file, one small JavaScript file. Edit any page by opening it in a text editor
-(Notepad works); every section is labelled with an HTML comment like
-`<!-- ================= HERO ================= -->`.
+The public website for Drs Rego, an Australian medical registration, compliance and GP recruitment consultancy. Live at https://drsrego.com.au, hosted on Netlify, built with Eleventy from the files in `src/`.
+
+## Start here
+
+| I want to… | Read |
+|---|---|
+| Add a job advert, a blog post or a case study, or mark a job as filled | [CONTENT.md](CONTENT.md) |
+| Understand how the site gets published, see a preview, check forms, roll back | [DEPLOY.md](DEPLOY.md) |
+| Know the brand, the content rules and the decisions behind the build | [CLAUDE.md](CLAUDE.md) |
+| See what the SEO audit found and what to do about it | [SEO-AUDIT.md](SEO-AUDIT.md) |
+
+## How it fits together
 
 ```
-/
-├── index.html          Home
-├── doctors.html        For doctors (services + FAQ)
-├── clinics.html        For clinics
-├── about.html          About / boundaries
-├── contact.html        Enquiry form + booking block
-├── privacy.html        Privacy Policy (template — lawyer review before launch)
-├── terms.html          Terms of Use (template — lawyer review before launch)
-├── 404.html            "Page not found" page (see §4 for hosting setup)
-├── sitemap.xml         For search engines
-├── robots.txt          For search engines (AI crawlers deliberately allowed)
-├── llms.txt            Site summary for AI search engines (ChatGPT, Perplexity…)
-├── favicon.svg         Browser tab icon
-├── apple-touch-icon.png  Home-screen icon (iOS)
-├── SEO_AUDIT_REPORT.md Audit + fixes record (not linked from the site)
-└── assets/
-    ├── css/styles.css  All styling (design tokens at the top)
-    ├── js/main.js      Menu, scroll reveal, form validation
-    └── img/            Processed images + CREDITS.txt (+ src/ originals)
+src/                    everything the site is built from
+  _data/site.json       business details (phone, email, ABN, socials)
+  _data/regulatory.json regulator source links and last-verified dates
+  _includes/            the shared layout, header, footer and blocks
+  *.html                the main pages (home, doctors, clinics, about, contact, legal)
+  jobs/*.md             one file per job advert
+  insights/*.md         one file per Insights post or case study
+  assets/               CSS, JavaScript, images
+  static/               robots.txt, redirects, security headers, icons
+templates/              copy-and-fill starting points for a job, a post, a case study
+scripts/                the content checker (before build) and the site checker (after build)
+_site/                  the finished website (generated, not edited, not in Git)
+netlify.toml            tells Netlify how to build: npm run build, publish _site
 ```
 
----
+## Commands
 
-## 1. Business details — all filled in
+Install once:
 
-There are **no placeholders left to replace**. The following are live in the code:
+```bash
+npm install
+```
 
-| Detail | Value | Where |
-|---|---|---|
-| Email | info@drsrego.com.au | Every footer, contact form fallback, legal pages, structured data |
-| Phone | (02) 8281 6694 (`tel:+61282816694`) | Every footer, structured data |
-| Location | Sydney, NSW | Every footer, structured data, `terms.html` governing law (New South Wales) |
-| Legal entity | FFAM Holdings Pty Ltd trading as Drs Rego · ABN 66 690 668 529 | Every footer bottom bar, structured data |
-| LinkedIn | https://www.linkedin.com/company/drsrego/ | Footer icons + `sameAs` |
-| Facebook | https://www.facebook.com/profile.php?id=61591452797628 | Footer icons + `sameAs` |
-| Instagram | none (removed by request) | — |
-| Calendly | https://calendly.com/drsrego-info/30min (brand-coloured) | `contact.html`, live embed |
-| Legal "Last updated" | 7 July 2026 | `privacy.html`, `terms.html` — update when your lawyer revises them |
+Build the site and run every check:
 
-## 2. The enquiry form (Netlify Forms)
+```bash
+npm test
+```
 
-The form in `contact.html` is wired for **Netlify Forms** (`data-netlify="true"`,
-spam honeypot included, success redirect to `/thank-you.html`). After the first deploy:
+Preview at http://localhost:8734 while editing:
 
-1. Netlify dashboard → your site → **Forms** → enable form detection (if asked).
-2. **Forms → Form notifications → Add notification → Email** and enter
-   `info@drsrego.com.au` — submissions then arrive by email as well as in the
-   dashboard. Free tier: 100 submissions/month.
+```bash
+npm run serve
+```
 
-> **Important:** Netlify Forms only work while the site is hosted on Netlify.
-> If you ever move to cPanel or another host, the form will stop capturing
-> submissions (visitors would see the thank-you page but nothing is recorded) —
-> reconnect it to a form service such as Formspree at that point.
+## Business details in the code
 
-## 3. The Calendly booking widget
+Email `info@drsrego.com.au`, phone `(02) 8281 6694`, Sydney NSW, FFAM Holdings Pty Ltd trading as Drs Rego, ABN 66 690 668 529, LinkedIn and Facebook links: all in `src/_data/site.json`. Change them there and every page updates.
 
-Already active on `contact.html` (30-minute call, brand colours). To change the
-event type or colours later, edit the `data-url` inside the block marked
-`<!-- Calendly inline widget begin -->`. Manage availability at calendly.com.
+The Calendly booking widget is on `src/contact.html`, in the block marked `Calendly inline widget begin`.
 
-## 4. Deploy (Netlify)
+## Adding or replacing a photo
 
-1. Go to <https://app.netlify.com/drop> (or create a site in the dashboard).
-2. Drag this whole folder onto the page.
-3. **Domain settings** → add `drsrego.com.au` and follow the DNS instructions;
-   enable HTTPS (automatic) and set the primary domain so `www` redirects to
-   the non-www address (the canonical used across the site).
-4. Do the Forms steps in §2 above.
+Images ship in three widths (480 / 960 / 1600 px) in WebP and JPEG. Save the original into `src/assets/img/src/`, then generate the six variants with Python and Pillow:
 
-Netlify serves `404.html` automatically — no configuration needed.
+```bash
+pip install Pillow
+```
 
-If your final domain is ever not `https://drsrego.com.au/`, update that address
-in: each page's `<link rel="canonical">` and Open Graph tags, `sitemap.xml`,
-`robots.txt`, `llms.txt`, and the structured-data blocks in each page's `<head>`.
+```bash
+python -c "from PIL import Image; im=Image.open('src/assets/img/src/my-photo.jpg').convert('RGB'); [ (lambda v,w: (v.save(f'src/assets/img/my-photo-{w}.webp','WEBP',quality=78), v.save(f'src/assets/img/my-photo-{w}.jpg','JPEG',quality=78,optimize=True,progressive=True)))(im.resize((w, round(im.height*w/im.width)), Image.LANCZOS), w) for w in (480,960,1600)]"
+```
 
-(Fallback — cPanel hosting: upload everything to `public_html`, add
-`ErrorDocument 404 /404.html` to `.htaccess`, and reconnect the form per §2's
-warning.)
+Copy an existing `<picture>` block from a page, change the file names, set `width` and `height` to the real size of the 960 variant, write a meaningful `alt`, and add the source to `src/assets/img/CREDITS.txt`.
 
-**Security headers (hosting-level recommendation)** — these cannot be set from
-the HTML files; add them at the host when convenient:
-- cPanel: in `.htaccess` —
-  `Header set X-Content-Type-Options "nosniff"` and a Content-Security-Policy
-  suited to the site (it only loads from itself + Google Fonts + Calendly).
-- Netlify: the same headers via a `_headers` file.
-They are a hardening nicety, not a launch blocker.
+## Deliberately not on this site
 
-**After launch (search engines)**:
-1. Google Search Console: verify the domain, submit `sitemap.xml`.
-2. Bing Webmaster Tools: same (Bing also feeds ChatGPT Search).
-3. Check social previews render: paste each page URL into a social debugger
-   (LinkedIn Post Inspector, Facebook Sharing Debugger) once live.
+- No pricing. Every service ends in an enquiry.
+- No immigration or visa content. Visa matters are referred to a registered migration agent.
+- No outcome guarantees or regulator turnaround times.
+- No regulatory statement without a source link and a last-verified date.
 
-## 5. Editing copy safely
-
-- Every section of every page is labelled:
-  `<!-- ================= SERVICES STRIP ================= -->` etc.
-  Edit the text between the tags; avoid deleting the tags themselves.
-- Text lives between `>` and `<`. For example, in
-  `<h2>Six things, done properly.</h2>` you can change everything between
-  `<h2>` and `</h2>`.
-- Don't remove attributes like `class="..."` or `id="..."` — the styling and
-  footer links depend on them.
-- After editing, open the file in your browser to check it before uploading.
-
-## 6. Adding or replacing a photo
-
-Images ship in three widths (480 / 960 / 1600 px) in two formats (WebP + JPEG),
-generated at quality 78. To add a new photo:
-
-1. Save the original into `assets/img/src/` (e.g. `my-photo.jpg`).
-2. Create the six variants. If you have Python installed:
-
-   ```
-   pip install Pillow
-   python - <<"PY"
-   from PIL import Image
-   im = Image.open("assets/img/src/my-photo.jpg").convert("RGB")
-   for w in (480, 960, 1600):
-       h = round(im.height * w / im.width)
-       v = im.resize((w, h), Image.LANCZOS)
-       v.save(f"assets/img/my-photo-{w}.webp", "WEBP", quality=78)
-       v.save(f"assets/img/my-photo-{w}.jpg", "JPEG", quality=78, optimize=True, progressive=True)
-   PY
-   ```
-
-   (Or use any online converter to produce the same six files.)
-3. Copy an existing `<picture>` block from a page, change the file names, set
-   the `width`/`height` attributes to the real pixel size of the 960 variant,
-   and write a meaningful `alt` description.
-4. Add the photo's source line to `assets/img/CREDITS.txt`.
-
-## 7. What's deliberately NOT on this site
-
-- **No pricing** — every service ends in an enquiry, by design.
-- **No immigration/visa content** — the scope note appears on the homepage,
-  Doctors page, About page and every footer. Keep it there.
+Historical reports from the July 2026 launch are in `docs/archive/`.

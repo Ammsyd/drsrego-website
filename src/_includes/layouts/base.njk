@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.remove("no-js");</script>
+  {%- set pageTitle = title if titleRaw else (title ~ " | " ~ site.name) %}
+  {%- set pageUrl = page.url | absoluteUrl(site.url) %}
+  {%- set ogImage = (image or site.defaultImage) | absoluteUrl(site.url) %}
+  {%- set ogImageWidth = imageWidth or site.defaultImageWidth %}
+  {%- set ogImageHeight = imageHeight or site.defaultImageHeight %}
+  {%- set ogImageAlt = imageAlt or site.defaultImageAlt %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ description }}">
+  {%- if noindex %}
+  <meta name="robots" content="noindex, follow">
+  {%- else %}
+  <link rel="canonical" href="{{ pageUrl }}">
+  {%- endif %}
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ pageUrl }}">
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:image:width" content="{{ ogImageWidth }}">
+  <meta property="og:image:height" content="{{ ogImageHeight }}">
+  <meta property="og:image:alt" content="{{ ogImageAlt }}">
+  <meta property="og:locale" content="en_AU">
+  {%- if ogType == "article" %}
+  <meta property="article:published_time" content="{{ date | isoDate }}">
+  <meta property="article:modified_time" content="{{ (last_verified or date) | isoDate }}">
+  <meta property="article:author" content="{{ site.author }}">
+  {%- if category %}
+  <meta property="article:section" content="{{ 'For doctors' if category == 'doctors' else 'For practices' }}">
+  {%- endif %}
+  {%- endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
+
+  <!-- Icons and fonts -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {%- if preloadImage %}
+
+  <!-- Hero image preload (above the fold) -->
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="{{ preloadImage.srcset }}"
+        imagesizes="{{ preloadImage.sizes }}">
+  {%- endif %}
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/main.js" defer></script>
+  {%- if breadcrumb %}
+
+  <!-- Structured data: breadcrumb -->
+  {%- set crumbs = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": site.url ~ "/" }] %}
+  {%- if breadcrumb.parent %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 2, "name": breadcrumb.parent.name, "item": breadcrumb.parent.url | absoluteUrl(site.url) }) %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 3, "name": breadcrumb.name, "item": pageUrl }) %}
+  {%- else %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 2, "name": breadcrumb.name, "item": pageUrl }) %}
+  {%- endif %}
+  <script type="application/ld+json">
+{{ { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs } | jsonld | safe }}
+  </script>
+  {%- endif %}
+  {%- if schemaType %}
+  {%- include "partials/schema.njk" %}
+  {%- endif %}
+  {%- if extraHead %}
+  {{ extraHead | safe }}
+  {%- endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% include "partials/header.njk" %}
+
+  <main id="main">
+{{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+</body>
+</html>

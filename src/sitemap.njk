@@ -1,0 +1,20 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+layout: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in collections.all %}
+  {%- set skip = p.data.noindex or p.data.draft or (p.data.status and p.data.status != "open") or p.url == "/404.html" or p.url == "/thank-you.html" %}
+  {%- if not skip and p.url %}
+  <url>
+    <loc>{{ p.url | absoluteUrl(site.url) }}</loc>
+    {%- set lastmod = p.data.last_verified or p.data.posted or p.data.date %}
+    {%- if lastmod %}
+    <lastmod>{{ lastmod | isoDate }}</lastmod>
+    {%- endif %}
+  </url>
+  {%- endif %}
+{%- endfor %}
+</urlset>
