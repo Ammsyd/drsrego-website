@@ -21,6 +21,7 @@ breadcrumb:
             <li>We confirm supervision capacity, because a doctor on limited or provisional registration cannot start without an approved supervisor.</li>
             <li>We introduce only doctors whose registration and Medicare position fits the role. No guarantees on timing: Ahpra, the Colleges and Services Australia make the decisions.</li>
           </ul>
+          <p class="source">Sources: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}; <a href="{{ regulatory.supervision.url }}">{{ regulatory.supervision.short }}</a>, last verified {{ regulatory.supervision.verified | dateAU }}.</p>
         </div>
       </div>
     </section>
@@ -56,7 +57,8 @@ breadcrumb:
           <div class="field">
             <label for="address">Street address of the practice <span aria-hidden="true">*</span></label>
             <span class="hint-block" id="address-help">We ask for your street address because Distribution Priority Area status is set across GP catchments, not suburbs. We verify it before we shortlist, so we never send you a doctor you cannot legally engage.</span>
-            <textarea id="address" name="street_address" rows="3" autocomplete="street-address" aria-describedby="address-help address-error" required></textarea>
+            <span class="hint-block source" id="address-source">Source: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}.</span>
+            <textarea id="address" name="street_address" rows="3" autocomplete="street-address" aria-describedby="address-help address-source address-error" required></textarea>
             <p class="error-message" id="address-error" role="alert"></p>
           </div>
 
@@ -130,7 +132,7 @@ breadcrumb:
 
           <div class="field">
             <label for="supervision">Supervision capacity <span aria-hidden="true">*</span></label>
-            <span class="hint-block" id="supervision-hint">A doctor on limited or provisional registration needs a Board-approved supervisor at the practice.</span>
+            <span class="hint-block" id="supervision-hint">A doctor on limited or provisional registration needs a Board-approved supervisor at the practice. Source: <a href="{{ regulatory.supervision.url }}">{{ regulatory.supervision.short }}</a>, last verified {{ regulatory.supervision.verified | dateAU }}.</span>
             <select id="supervision" name="supervision_capacity" aria-describedby="supervision-hint supervision-error" required>
               <option value="">Please select</option>
               <option>Yes, an approved supervisor is available</option>

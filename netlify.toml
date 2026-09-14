@@ -3,8 +3,8 @@
 
 [build]
   # Eleventy turns the files in src/ into the finished website in _site/.
-  # "npm run build" first runs the content validator, then Eleventy.
-  command = "npm run build"
+  # "npm test" runs the content validator, then Eleventy, then the built-site checker.
+  command = "npm test"
   publish = "_site"
 
 [build.environment]

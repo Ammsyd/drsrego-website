@@ -341,7 +341,7 @@ p {
   padding-block: 0.25em;
 }
 .nav-list a:hover { background-size: 100% 1px; color: var(--accent); }
-.nav-list a[aria-current="page"] {
+.nav-list a[aria-current] {
   color: var(--accent);
   background-size: 100% 1px;
 }

@@ -68,7 +68,7 @@ There are three forms: `enquiry` (contact page), `register-interest` (doctors) a
 
 **Where submissions live:** click **Forms** in the left menu, then the form name. Every submission is listed with every field. For `register-interest`, the uploaded CV appears as a link in the submission. Netlify also has a **Spam** tab; check it occasionally, because the automatic filter is sometimes too keen.
 
-**Limits at the time of writing:** the free Forms tier allows 100 submissions a month across all forms and limits uploads to 10 MB per file. If the site gets busier than that, Netlify will email you and you can upgrade the Forms add-on. Confirm current limits at https://www.netlify.com/pricing/.
+**Limits at the time of writing:** the free Forms tier allows 100 submissions a month across all forms and limits uploads to 10 MB per file. The CV field on the site rejects files over 8 MB so that submissions stay safely under that limit. If the site gets busier than that, Netlify will email you and you can upgrade the Forms add-on. Confirm current limits at https://www.netlify.com/pricing/.
 
 **Spam protection:** every form has a hidden honeypot field (bots fill it in, people cannot see it) and Netlify runs its own spam filter on top. If spam still gets through, Netlify can add a reCAPTCHA; ask for that change.
 

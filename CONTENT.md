@@ -66,6 +66,8 @@ What happens: the page stays online with a banner saying the position has been f
 
 To reopen a role later, set `status: open` and update `posted`, `closes` and `classification_checked` after re-checking the Locator.
 
+If you forget: once the `closes` date has passed, the next build shows the role as closed automatically and the checker prints a warning naming the file. Nothing rebuilds until something is pushed, though, so it is still your job to change `status` when a role is filled.
+
 ## Adding a blog post (Insights)
 
 1. On GitHub, open `templates/post.md`, copy its contents.

@@ -94,7 +94,7 @@
   var MAX_UPLOAD_BYTES = 8 * 1024 * 1024; // 8 MB, under Netlify's upload limit
 
   function fieldWrapper(input) {
-    return input.closest(".field, .field-checkbox, fieldset");
+    return input.closest("fieldset, .field") || input.closest(".field-checkbox");
   }
 
   function setError(input, message) {
@@ -178,6 +178,7 @@
   var params = new URLSearchParams(window.location.search);
   var topic = params.get("topic");
   var job = params.get("job");
+  if (job && !/^[a-z0-9-]{1,80}$/.test(job)) job = null;
   if (topic || job) {
     var topicInput = document.querySelector('input[name="topic"]');
     var jobInput = document.querySelector('input[name="job"]');

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.remove("no-js");</script>
   {%- set pageTitle = title if titleRaw else (title ~ " | " ~ site.name) %}
   {%- set pageUrl = page.url | absoluteUrl(site.url) %}
   {%- set ogImage = (image or site.defaultImage) | absoluteUrl(site.url) %}
@@ -60,20 +61,15 @@
   {%- if breadcrumb %}
 
   <!-- Structured data: breadcrumb -->
+  {%- set crumbs = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": site.url ~ "/" }] %}
+  {%- if breadcrumb.parent %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 2, "name": breadcrumb.parent.name, "item": breadcrumb.parent.url | absoluteUrl(site.url) }) %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 3, "name": breadcrumb.name, "item": pageUrl }) %}
+  {%- else %}
+  {%- set _ = crumbs.push({ "@type": "ListItem", "position": 2, "name": breadcrumb.name, "item": pageUrl }) %}
+  {%- endif %}
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"}
-      {%- if breadcrumb.parent %},
-      {"@type": "ListItem", "position": 2, "name": "{{ breadcrumb.parent.name }}", "item": "{{ breadcrumb.parent.url | absoluteUrl(site.url) }}"},
-      {"@type": "ListItem", "position": 3, "name": {{ breadcrumb.name | dump | safe }}, "item": "{{ pageUrl }}"}
-      {%- else %},
-      {"@type": "ListItem", "position": 2, "name": {{ breadcrumb.name | dump | safe }}, "item": "{{ pageUrl }}"}
-      {%- endif %}
-    ]
-  }
+{{ { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs } | jsonld | safe }}
   </script>
   {%- endif %}
   {%- if schemaType %}

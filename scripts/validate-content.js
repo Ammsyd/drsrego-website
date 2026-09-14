@@ -12,6 +12,7 @@ import * as yaml from "js-yaml";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const src = path.join(root, "src");
 const problems = [];
+const warnings = [];
 const fail = (file, msg) => problems.push(`✗ ${path.relative(root, file).replace(/\\/g, "/")}: ${msg}`);
 
 // ---------------------------------------------------------------------------
@@ -107,6 +108,12 @@ if (fs.existsSync(jobsDir)) {
     if (typeof data.description === "string" && data.description.length > 160) {
       fail(file, `description is ${data.description.length} characters; keep it under 160 so Google shows it in full.`);
     }
+    if (data.posted && data.closes && isoDate(data.posted) && isoDate(data.closes) && new Date(data.closes) < new Date(data.posted)) {
+      fail(file, `closes (${String(data.closes).slice(0, 10)}) is before posted (${String(data.posted).slice(0, 10)}).`);
+    }
+    if (data.status === "open" && data.closes && isoDate(data.closes) && new Date(String(data.closes).slice(0, 10) + "T23:59:59Z") < new Date()) {
+      warnings.push(`! ${path.relative(root, file).replace(/\\/g, "/")}: closes ${String(data.closes).slice(0, 10)} has passed. The site will show it as closed. Set status to filled or closed, or extend closes.`);
+    }
     if (data.status === "open" && !data.draft) openCount += 1;
   }
 }
@@ -134,6 +141,8 @@ if (fs.existsSync(postsDir)) {
       data.sources.forEach((s, i) => {
         if (!s || !s.label || !s.url || !s.verified) {
           fail(file, `sources item ${i + 1} needs label, url and verified (a YYYY-MM-DD date).`);
+        } else if (!isoDate(s.verified)) {
+          fail(file, `sources item ${i + 1}: verified must be a date written as YYYY-MM-DD (found "${s.verified}").`);
         } else if (!/^https:\/\/([a-z0-9-]+\.)*(health\.gov\.au|ahpra\.gov\.au|medicalboard\.gov\.au)\//.test(s.url) && !s.url.startsWith("[VERIFY")) {
           fail(file, `sources item ${i + 1} must point at health.gov.au, ahpra.gov.au or medicalboard.gov.au (found ${s.url}).`);
         }
@@ -182,6 +191,10 @@ if (fs.existsSync(regFile)) {
         if (!entry[f]) fail(regFile, `"${key}" is missing "${f}".`);
       }
       if (entry.verified && !isoDate(entry.verified)) fail(regFile, `"${key}".verified must be YYYY-MM-DD.`);
+      if (!entry.short) fail(regFile, `"${key}" is missing "short" (the link text used on pages).`);
+      if (entry.url && !/^https:\/\/([a-z0-9-]+\.)*(health\.gov\.au|ahpra\.gov\.au|medicalboard\.gov\.au)\//.test(entry.url)) {
+        fail(regFile, `"${key}".url must point at health.gov.au, ahpra.gov.au or medicalboard.gov.au (found ${entry.url}).`);
+      }
     }
   } catch (e) {
     fail(regFile, `not valid JSON (${e.message}).`);
@@ -197,4 +210,5 @@ if (problems.length) {
   console.error(`\n${problems.length} problem${problems.length === 1 ? "" : "s"} found.\n`);
   process.exit(1);
 }
+for (const w of warnings) console.warn(w);
 console.log(`Content OK: ${jobCount} job${jobCount === 1 ? "" : "s"} (${openCount} open), ${postCount} post${postCount === 1 ? "" : "s"} (${publishedCount} published).`);
