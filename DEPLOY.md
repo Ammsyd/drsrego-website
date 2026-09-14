@@ -13,8 +13,8 @@ Written for someone who has never used Git. Read the first section once; use the
 ## What happens when something is pushed
 
 1. A change is pushed to GitHub (from your computer, or from the GitHub website itself).
-2. Netlify notices within seconds and runs the build command `npm run build`.
-3. The build first runs the content checker. If any file breaks a rule (a missing field on a job, an em dash, an unresolved `[VERIFY]` marker), the build stops and nothing is published. The old site stays up.
+2. Netlify notices within seconds and runs the build command `npm test`.
+3. The build first runs the content checker. If any file breaks a rule (a missing field on a job, an em dash, an unresolved `[VERIFY]` marker), the build stops and nothing is published. The old site stays up. After the pages are built, a second checker looks for broken links, missing image descriptions and heading problems, and stops the deploy in the same way.
 4. If the check passes, Eleventy turns the files in `src/` into the finished website in `_site/`.
 5. If the push was to `main`, Netlify publishes `_site/` to drsrego.com.au. If it was to any other branch, Netlify publishes a **deploy preview** at a temporary address instead, so you can look before it goes live.
 
@@ -26,7 +26,7 @@ These live in the file `netlify.toml` in the repository, so the dashboard boxes 
 
 | Setting | Value |
 |---|---|
-| Build command | `npm run build` |
+| Build command | `npm test` |
 | Publish directory | `_site` |
 | Node version | 22 |
 | Production branch | `main` |
