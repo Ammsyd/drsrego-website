@@ -30,7 +30,8 @@ Recruitment is now a service. The differentiator is stating DPA and MMM with a v
 
 - Run `npm ci && npm test`. Both checks should print OK across 13 pages.
 - `src/jobs/example-role.md` and the three posts are `draft: true` on purpose; they never publish until markers are resolved.
-- Still to land on this branch: `SEO-AUDIT.md`, `DEPLOY.md`, `CONTENT.md`, a README refresh, live form verification on a Netlify deploy preview, and a code review pass.
+- `SEO-AUDIT.md`, `DEPLOY.md` and `CONTENT.md` are on the branch. A code review was run and its findings fixed (consent error display, checker on deploy, job expiry, sourced statements on the request form, interim privacy wording).
+- Not yet verified: live form submissions in the Netlify dashboard. No deploy preview exists for this branch, so the forms are verified only in local rendering. Check them on the deploy preview before merging (DEPLOY.md, "How to check a form is working").
 - After merging, Netlify needs: form detection enabled, email notifications for the three forms, and (if not already) the repository connected for continuous deployment. DEPLOY.md will spell out the clicks.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
