@@ -39,7 +39,9 @@ breadcrumb:
           <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
           <p class="notice" data-job-note hidden>You are registering interest in the role: <strong data-job-slot></strong>.</p>
 
-          <p class="form-section-title">About you</p>
+          <p class="form-required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+          <h2 class="form-section-title">About you</h2>
 
           <div class="field">
             <label for="name">Full name <span aria-hidden="true">*</span></label>
@@ -60,7 +62,7 @@ breadcrumb:
             <p class="error-message" id="phone-error" role="alert"></p>
           </div>
 
-          <p class="form-section-title">Registration</p>
+          <h2 class="form-section-title">Registration</h2>
 
           <div class="field">
             <label for="ahpra">Ahpra registration number <span class="hint">(optional)</span></label>
@@ -96,10 +98,10 @@ breadcrumb:
 
           <fieldset class="field">
             <legend>Vocationally registered? <span aria-hidden="true">*</span></legend>
-            <div class="radio-group" aria-describedby="vr-error">
-              <label><input type="radio" name="vocationally_registered" value="Yes" required> Yes</label>
-              <label><input type="radio" name="vocationally_registered" value="No" required> No</label>
-              <label><input type="radio" name="vocationally_registered" value="Not sure" required> Not sure</label>
+            <div class="radio-group">
+              <label><input type="radio" name="vocationally_registered" value="Yes" aria-describedby="vr-error" required> Yes</label>
+              <label><input type="radio" name="vocationally_registered" value="No" aria-describedby="vr-error" required> No</label>
+              <label><input type="radio" name="vocationally_registered" value="Not sure" aria-describedby="vr-error" required> Not sure</label>
             </div>
             <p class="error-message" id="vr-error" role="alert"></p>
           </fieldset>
@@ -120,7 +122,7 @@ breadcrumb:
             <p class="error-message" id="pathway-error" role="alert"></p>
           </div>
 
-          <p class="form-section-title">The role you want</p>
+          <h2 class="form-section-title">The role you want</h2>
 
           <div class="field">
             <label for="locations">Preferred locations <span aria-hidden="true">*</span></label>
@@ -143,7 +145,7 @@ breadcrumb:
             <p class="error-message" id="cv-error" role="alert"></p>
           </div>
 
-          <p class="form-section-title">Consent</p>
+          <h2 class="form-section-title">Consent</h2>
 
           <div class="field">
             <div class="field-checkbox">

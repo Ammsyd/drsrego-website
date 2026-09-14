@@ -36,7 +36,9 @@ breadcrumb:
           <input type="hidden" name="form-name" value="request-doctor">
           <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
 
-          <p class="form-section-title">Your practice</p>
+          <p class="form-required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+          <h2 class="form-section-title">Your practice</h2>
 
           <div class="field">
             <label for="practice-name">Practice name <span aria-hidden="true">*</span></label>
@@ -58,7 +60,7 @@ breadcrumb:
             <p class="error-message" id="address-error" role="alert"></p>
           </div>
 
-          <p class="form-section-title">Your contact</p>
+          <h2 class="form-section-title">Your contact</h2>
 
           <div class="field">
             <label for="contact-name">Contact name <span aria-hidden="true">*</span></label>
@@ -84,7 +86,7 @@ breadcrumb:
             <p class="error-message" id="contact-phone-error" role="alert"></p>
           </div>
 
-          <p class="form-section-title">The position</p>
+          <h2 class="form-section-title">The position</h2>
 
           <div class="field">
             <label for="position-type">Position type <span aria-hidden="true">*</span></label>
@@ -107,10 +109,10 @@ breadcrumb:
 
           <fieldset class="field">
             <legend>Vocational registration required? <span aria-hidden="true">*</span></legend>
-            <div class="radio-group" aria-describedby="vr-required-error">
-              <label><input type="radio" name="vr_required" value="Yes" required> Yes</label>
-              <label><input type="radio" name="vr_required" value="No" required> No</label>
-              <label><input type="radio" name="vr_required" value="Either" required> Either</label>
+            <div class="radio-group">
+              <label><input type="radio" name="vr_required" value="Yes" aria-describedby="vr-required-error" required> Yes</label>
+              <label><input type="radio" name="vr_required" value="No" aria-describedby="vr-required-error" required> No</label>
+              <label><input type="radio" name="vr_required" value="Either" aria-describedby="vr-required-error" required> Either</label>
             </div>
             <p class="error-message" id="vr-required-error" role="alert"></p>
           </fieldset>
@@ -156,7 +158,7 @@ breadcrumb:
             <textarea id="notes" name="notes" rows="4"></textarea>
           </div>
 
-          <p class="form-section-title">Consent</p>
+          <h2 class="form-section-title">Consent</h2>
 
           <div class="field">
             <div class="field-checkbox">

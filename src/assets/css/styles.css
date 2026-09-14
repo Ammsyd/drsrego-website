@@ -938,9 +938,9 @@ p {
   font-size: 1rem;
   line-height: 1.4;
 }
-.field input:focus-visible,
-.field select:focus-visible,
-.field textarea:focus-visible {
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
   border-color: var(--accent);
@@ -999,6 +999,8 @@ fieldset.field legend {
 }
 .radio-group input { width: 1.15rem; height: 1.15rem; accent-color: var(--accent); margin: 0; }
 
+h2.form-section-title { line-height: 1.4; text-wrap: normal; }
+.form-required-note { font-size: 0.875rem; color: var(--slate); margin: 0; }
 .form-section-title {
   font-family: var(--font-body);
   font-size: 0.75rem;
