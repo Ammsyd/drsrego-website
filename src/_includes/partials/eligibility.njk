@@ -1,0 +1,18 @@
+{#- Eligibility block. Rendered on every job page from the job's front matter.
+    Expects: mmm, dpa, classification_checked, img_eligible, vr_required, slug. -#}
+<section class="eligibility" aria-labelledby="eligibility-title">
+  <h2 class="eligibility-title" id="eligibility-title">Eligibility</h2>
+  <p>
+    This position is at an <strong>MMM {{ mmm }}</strong> location classified
+    <strong>{% if dpa %}a Distribution Priority Area{% else %}not a Distribution Priority Area{% endif %}</strong>
+    as at {{ classification_checked | dateAU }}.
+    It suits {% if img_eligible %}a doctor who is subject to a section 19AB restriction, as well as doctors who are not{% else %}a doctor who is not subject to a section 19AB restriction, or who already holds an exemption that covers this location{% endif %}.
+    {% if vr_required %}Vocational registration is required for this role.{% else %}Vocational registration is not required for this role.{% endif %}
+    Vocational registration alone does not remove a section 19AB restriction.
+  </p>
+  <p class="source">Sources: <a href="{{ regulatory.s19ab.url }}">{{ regulatory.s19ab.short }}</a>, last verified {{ regulatory.s19ab.verified | dateAU }}; <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}; <a href="{{ regulatory.mmm.url }}">{{ regulatory.mmm.short }}</a>, last verified {{ regulatory.mmm.verified | dateAU }}.</p>
+  <p class="eligibility-cta">
+    <span class="eligibility-question">Unsure where you sit?</span>
+    <a class="btn" href="/contact.html?topic=eligibility&amp;job={{ slug }}">Ask us <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  </p>
+</section>

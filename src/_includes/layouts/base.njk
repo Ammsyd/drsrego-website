@@ -76,6 +76,9 @@
   }
   </script>
   {%- endif %}
+  {%- if schemaType %}
+  {%- include "partials/schema.njk" %}
+  {%- endif %}
   {%- if extraHead %}
   {{ extraHead | safe }}
   {%- endif %}

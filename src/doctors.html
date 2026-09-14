@@ -54,6 +54,14 @@ extraHead: |
           <div class="cta-row">
             <a class="btn" href="/contact.html">Get in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
+          <nav aria-label="On this page">
+            <ul class="jump-list">
+              <li><a href="#ahpra">Registration and pathways</a></li>
+              <li><a href="#pesci-exemption">PESCI</a></li>
+              <li><a href="#supervision">Supervision and fellowship</a></li>
+              <li><a href="#opportunities">Current opportunities</a></li>
+            </ul>
+          </nav>
         </div>
         <figure class="img-card">
           <picture>
@@ -165,6 +173,30 @@ extraHead: |
         </article>
       </div>
     </section>
+
+    <!-- ================= CURRENT OPPORTUNITIES ================= -->
+    <section class="section" id="opportunities" aria-labelledby="opportunities-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Current opportunities</span>
+          <h2 id="opportunities-title">GP roles with the location facts stated up front.</h2>
+          <p>Every advert states the location&rsquo;s MMM category and DPA status with the date we checked, and who the role suits under section 19AB.</p>
+        </div>
+        {%- set latest = collections.openJobs | head(3) %}
+        {%- if latest.length %}
+        <div class="job-grid-list reveal">
+          {%- for job in latest %}
+          {% include "partials/job-card.njk" %}
+          {%- endfor %}
+        </div>
+        <p class="reveal" style="margin-top: var(--s-4)"><a class="link-arrow" href="/jobs/">See all current roles <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        {%- else %}
+        <p class="reveal">There are no open roles at the moment. <a class="link-arrow" href="/register-your-interest/">Register your interest</a> and we will contact you when a matching position opens.</p>
+        {%- endif %}
+      </div>
+    </section>
+
+    {% include "partials/ask-us.njk" %}
 
     <!-- ================= FAQ ================= -->
     <section class="section" id="faq">

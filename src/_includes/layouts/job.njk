@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+---
+{%- set isOpen = status == "open" -%}
+
+    <!-- ================= JOB HERO ================= -->
+    <section class="page-hero job-hero">
+      <div class="container">
+        <p class="breadcrumbs"><a href="/jobs/">All jobs</a></p>
+        <span class="eyebrow">{{ type }} &middot; {{ specialty }} &middot; {{ state }}</span>
+        <h1>{{ title }}</h1>
+        {%- if not isOpen %}
+        <div class="notice notice-status" role="status">
+          <strong>{% if status == "filled" %}This position has been filled.{% else %}Applications for this position have closed.{% endif %}</strong>
+          The details stay online for reference. See <a href="/jobs/">current roles</a>, or <a href="/register-your-interest/">register your interest</a> and we will contact you when a similar position opens.
+        </div>
+        {%- endif %}
+        <p class="lede">{{ description }}</p>
+      </div>
+    </section>
+
+    <!-- ================= JOB DETAILS ================= -->
+    <section class="section job-body" aria-label="Position details">
+      <div class="container job-grid">
+        <div>
+          <dl class="job-summary">
+            <div><dt>Location</dt><dd>{{ suburb }}, {{ region }}, {{ state }}</dd></div>
+            <div><dt>Type</dt><dd>{{ type }}</dd></div>
+            <div><dt>Sessions</dt><dd>{{ sessions }}</dd></div>
+            <div><dt>Start</dt><dd>{{ start }}</dd></div>
+            <div><dt>Vocational registration</dt><dd>{% if vr_required %}Required{% else %}Not required{% endif %}</dd></div>
+            <div><dt>MMM category</dt><dd>MMM {{ mmm }}</dd></div>
+            <div><dt>DPA status</dt><dd>{% if dpa %}DPA{% else %}Not DPA{% endif %}, checked {{ classification_checked | dateAU }}</dd></div>
+            <div><dt>Posted</dt><dd>{{ posted | dateAU }}</dd></div>
+            <div><dt>Closes</dt><dd>{{ closes | dateAU }}</dd></div>
+          </dl>
+
+          {% include "partials/eligibility.njk" %}
+
+          <div class="prose">
+{{ content | safe }}
+          </div>
+
+          {%- if isOpen %}
+          <div class="job-actions">
+            <a class="btn" href="/register-your-interest/?job={{ slug }}">Register your interest in this role <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn-ghost" href="/contact.html?topic=eligibility&amp;job={{ slug }}">Ask about eligibility <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          {%- endif %}
+          <p class="job-disclaimer small">Drs Rego does not provide immigration or visa advice. Where a role involves sponsorship, that is referred to a registered migration agent. Registration, exemption and provider-number decisions are made by Ahpra, the Medical Board of Australia, the Colleges and Services Australia, not by Drs Rego or the practice.</p>
+        </div>
+        <aside class="job-aside">
+          <h2>How this works</h2>
+          <ol>
+            <li>Ask us where you sit with section 19AB, or register your interest.</li>
+            <li>We assess your registration and Medicare position against the role before anything is shared.</li>
+            <li>Nothing identifying goes to the practice without your further approval.</li>
+          </ol>
+          <p><a class="link-arrow" href="/insights/">Read our guides to 19AB, the moratorium and DPA <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        </aside>
+      </div>
+    </section>

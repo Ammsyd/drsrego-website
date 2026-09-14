@@ -1,0 +1,79 @@
+---
+layout: layouts/base.njk
+title: "GP Jobs in Australia with DPA and MMM Status"
+description: "General practice positions across Australia. Every advert states the location's MMM category and DPA status with the date it was checked, and who the role suits under section 19AB."
+permalink: /jobs/
+navSection: jobs
+tags: []
+schemaType: jobList
+eleventyExcludeFromCollections: true
+breadcrumb:
+  name: Jobs
+---
+{%- set jobs = collections.openJobs -%}
+{%- set states = [] -%}
+{%- set types = [] -%}
+{%- for job in jobs -%}
+  {%- if job.data.state not in states %}{% set states = (states.push(job.data.state), states) %}{% endif -%}
+  {%- if job.data.type not in types %}{% set types = (types.push(job.data.type), types) %}{% endif -%}
+{%- endfor -%}
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Jobs</span>
+        <h1>GP jobs, with the location facts stated up front.</h1>
+        <p class="lede">Every advert here states the location&rsquo;s Modified Monash Model category and Distribution Priority Area status, with the date we checked them, and says plainly whether the role suits a doctor subject to a section 19AB restriction. No other Australian GP job board does that.</p>
+        <p class="source">Classifications are checked on the <a href="{{ regulatory.locator.url }}">{{ regulatory.locator.short }}</a> (Department of Health, Disability and Ageing). Last verified {{ regulatory.locator.verified | dateAU }}. Classifications can change; the date on each advert is the date it was checked.</p>
+      </div>
+    </section>
+
+    <!-- ================= LISTING ================= -->
+    <section class="section" aria-label="Current positions">
+      <div class="container">
+        {%- if jobs.length %}
+        <form class="job-filters" aria-label="Filter jobs" data-job-filters>
+          <div class="field">
+            <label for="filter-state">State</label>
+            <select id="filter-state" name="state">
+              <option value="">All states</option>
+              {%- for s in states %}
+              <option value="{{ s }}">{{ s }}</option>
+              {%- endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-type">Type</label>
+            <select id="filter-type" name="type">
+              <option value="">All types</option>
+              {%- for t in types %}
+              <option value="{{ t }}">{{ t }}</option>
+              {%- endfor %}
+            </select>
+          </div>
+          <div class="field field-checkbox">
+            <input type="checkbox" id="filter-img" name="img" value="yes">
+            <label for="filter-img">Only roles suitable for a doctor with a section 19AB restriction</label>
+          </div>
+          <p class="job-count" id="jobs-count" aria-live="polite">{{ jobs.length }} of {{ jobs.length }} roles shown</p>
+        </form>
+
+        <div class="job-grid-list" id="jobs-list">
+          {%- for job in jobs %}
+          {% include "partials/job-card.njk" %}
+          {%- endfor %}
+        </div>
+        <p class="job-empty" id="jobs-none" hidden>No roles match those filters. <button type="button" class="link-arrow" data-job-reset>Show all roles</button></p>
+        {%- else %}
+        <div class="empty-state">
+          <h2>No open roles right now.</h2>
+          <p>Register your interest and we will contact you when a matching position opens. We assess your registration and Medicare position first, and nothing identifying goes to a practice without your further approval.</p>
+          <p><a class="btn" href="/register-your-interest/">Register your interest <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        </div>
+        {%- endif %}
+      </div>
+    </section>
+
+    <!-- ================= ASK US ================= -->
+    {% include "partials/ask-us.njk" %}
+    <script src="/assets/js/jobs.js" defer></script>

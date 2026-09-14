@@ -719,6 +719,150 @@ p {
 }
 
 /* --------------------------------------------------------------------------
+   9b. JOBS BOARD
+   -------------------------------------------------------------------------- */
+.job-hero { padding-bottom: var(--s-3); }
+.job-hero .lede { margin-bottom: 0; }
+.job-body { padding-top: var(--s-4); }
+@media (min-width: 60em) { .job-hero { padding-bottom: var(--s-4); } .job-body { padding-top: var(--s-5); } }
+.breadcrumbs { font-size: 0.875rem; margin-bottom: var(--s-2); }
+.breadcrumbs a { color: var(--slate); text-decoration: none; }
+.breadcrumbs a::before { content: "\2190\00a0"; }
+.breadcrumbs a:hover { color: var(--accent); }
+
+/* Status notice (filled / closed) */
+.notice {
+  border: 1px solid var(--ink);
+  border-left: 4px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--s-2) var(--s-3);
+  margin: 0 0 var(--s-3);
+  max-width: var(--measure);
+  font-size: 0.9375rem;
+}
+.notice a { color: var(--accent); }
+
+.job-grid { display: grid; gap: var(--s-5); align-items: start; }
+@media (min-width: 60em) { .job-grid { grid-template-columns: 7fr 4fr; gap: var(--s-6); } }
+
+/* Key facts list */
+.job-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--s-2) var(--s-3);
+  margin: 0 0 var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: 1px solid var(--mist);
+  border-bottom: 1px solid var(--mist);
+}
+.job-summary div { margin: 0; }
+.job-summary dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.job-summary dd { margin: 0.15rem 0 0; font-weight: 500; }
+
+/* Eligibility block: the main conversion point on a job page */
+.eligibility {
+  border: 1px solid var(--accent);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+  margin: 0 0 var(--s-5);
+  max-width: var(--measure);
+  background: #F7F8FF;
+}
+.eligibility-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--s-1);
+}
+.eligibility p { margin-bottom: var(--s-2); }
+.eligibility .source { margin-bottom: var(--s-3); }
+.eligibility-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  margin: 0 !important;
+}
+.eligibility-question { font-weight: 600; }
+.eligibility .btn { font-size: 1.0625rem; padding: 1em 1.8em; }
+
+.job-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-5) 0 var(--s-3); }
+.job-disclaimer { color: var(--slate); }
+
+.job-aside {
+  border-top: 2px solid var(--ink);
+  padding-top: var(--s-3);
+}
+.job-aside h2 { font-size: 1.25rem; margin-bottom: var(--s-2); }
+.job-aside ol { padding-left: 1.2em; color: var(--slate); margin: 0 0 var(--s-3); }
+.job-aside li { margin-bottom: var(--s-1); }
+
+/* Listing filters */
+.job-filters {
+  display: grid;
+  gap: var(--s-2) var(--s-3);
+  align-items: end;
+  padding: var(--s-3);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius);
+  margin-bottom: var(--s-5);
+}
+@media (min-width: 48em) { .job-filters { grid-template-columns: 1fr 1fr 2fr; } }
+.job-filters .field { margin: 0; }
+.job-filters .field-checkbox label { font-weight: 500; margin: 0; }
+.job-filters .job-count { grid-column: 1 / -1; margin: 0; font-size: 0.875rem; color: var(--slate); }
+.no-js .job-filters { display: none; }
+
+.job-grid-list { display: grid; gap: var(--s-3); }
+@media (min-width: 48em) { .job-grid-list { grid-template-columns: 1fr 1fr; } }
+
+.job-card {
+  border: 1px solid var(--mist);
+  border-top: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+  transition: border-color 0.2s ease;
+}
+.job-card:hover { border-color: var(--accent); }
+.job-card h3 { margin-bottom: var(--s-1); }
+.job-card h3 a { color: var(--ink); text-decoration: none; }
+.job-card h3 a:hover { color: var(--accent); }
+.job-card p { margin: 0 0 var(--s-1); font-size: 0.9375rem; color: var(--slate); }
+.job-card-meta { font-size: 0.75rem !important; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent) !important; }
+.job-card-class { font-weight: 500; color: var(--ink) !important; }
+.job-empty { margin-top: var(--s-3); }
+.job-empty button { border: 0; background: none; padding: 0; font: inherit; cursor: pointer; }
+
+.empty-state { max-width: var(--measure); }
+.empty-state h2 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
+
+/* Markdown content (jobs and insights) */
+.prose h2 { font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem); margin: var(--s-5) 0 var(--s-2); }
+.prose h3 { margin: var(--s-4) 0 var(--s-1); }
+.prose ul, .prose ol { max-width: var(--measure); padding-left: 1.3em; margin: 0 0 var(--s-3); }
+.prose li { margin-bottom: var(--s-1); }
+.prose blockquote { margin: 0 0 var(--s-3); padding-left: var(--s-3); border-left: 3px solid var(--accent); color: var(--slate); }
+.prose table { border-collapse: collapse; width: 100%; max-width: var(--measure); margin: 0 0 var(--s-3); font-size: 0.9375rem; }
+.prose th, .prose td { text-align: left; padding: var(--s-1) var(--s-2); border-bottom: 1px solid var(--mist); vertical-align: top; }
+.prose th { font-weight: 600; }
+.prose strong { font-weight: 600; }
+
+/* In-page jump list under a page hero */
+.jump-list { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+.jump-list a { font-size: 0.9375rem; font-weight: 500; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+.jump-list a:hover { border-bottom-color: var(--accent); }
+
+/* --------------------------------------------------------------------------
    10. FORMS
    -------------------------------------------------------------------------- */
 .form-grid {
