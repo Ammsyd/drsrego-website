@@ -54,6 +54,14 @@ extraHead: |
           <div class="cta-row">
             <a class="btn" href="/contact.html">Get in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
+          <nav aria-label="On this page">
+            <ul class="jump-list">
+              <li><a href="#audit">IMG-Readiness Audit</a></li>
+              <li><a href="#supervisor-matching">Supervisor matching and compliance</a></li>
+              <li><a href="#recruitment">GP recruitment</a></li>
+              <li><a href="#request">Request a doctor</a></li>
+            </ul>
+          </nav>
         </div>
         <figure class="img-card">
           <picture>
@@ -112,6 +120,26 @@ extraHead: |
             <p><a class="link-arrow" href="/contact.html">Enquire about this <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
           </div>
         </article>
+
+        <!-- Service: GP Recruitment -->
+        <article class="service-block reveal" id="recruitment">
+          <span class="num" aria-hidden="true">05</span>
+          <div>
+            <h3>GP Recruitment, Compliance First</h3>
+            <p>We find doctors for practices, but only after the compliance questions are answered. Before any introduction we verify your street address against the current Distribution Priority Area and Modified Monash Model classifications on the Health Workforce Locator, record the date we checked, and assess each doctor&rsquo;s section 19AB position against that location. You see only doctors you can legally engage. We do not promise timeframes: registration, exemptions and provider numbers are decided by Ahpra, the Medical Board of Australia and Services Australia, not by us.</p>
+            <p class="source">Sources: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}; <a href="{{ regulatory.mmm.url }}">{{ regulatory.mmm.short }}</a>, last verified {{ regulatory.mmm.verified | dateAU }}; <a href="{{ regulatory.s19ab.url }}">{{ regulatory.s19ab.short }}</a>, last verified {{ regulatory.s19ab.verified | dateAU }}.</p>
+            <p><a class="link-arrow" href="/request-a-doctor/">Request a doctor <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= REQUEST A DOCTOR ================= -->
+    <section class="cta-band" id="request" aria-labelledby="request-title">
+      <div class="container">
+        <h2 id="request-title" class="reveal">Need a GP? Start with your street address.</h2>
+        <p class="reveal">Tell us about the role. We verify your DPA and MMM status and the doctor&rsquo;s 19AB position before we shortlist, so we never send you a doctor you cannot legally engage.</p>
+        <a class="btn btn-inverse reveal" href="/request-a-doctor/">Request a doctor <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
 

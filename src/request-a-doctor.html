@@ -1,0 +1,176 @@
+---
+layout: layouts/base.njk
+title: "Request a Doctor for Your Practice"
+description: "Ask Drs Rego to find a GP for your practice. We verify your DPA and MMM status and the doctor's section 19AB position before we shortlist anyone."
+permalink: /request-a-doctor/
+navSection: practices
+breadcrumb:
+  parent: { name: "For Practices", url: "/clinics.html" }
+  name: Request a doctor
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">For practices</span>
+        <h1>Request a doctor for your practice.</h1>
+        <p class="lede">Tell us about the role. We verify your location&rsquo;s DPA and MMM status and each doctor&rsquo;s section 19AB position before we shortlist, so we never send you a doctor you cannot legally engage.</p>
+        <div class="form-intro">
+          <p>What happens next:</p>
+          <ul>
+            <li>We check your street address on the Health Workforce Locator and confirm your DPA and MMM classification in writing.</li>
+            <li>We confirm supervision capacity, because a doctor on limited or provisional registration cannot start without an approved supervisor.</li>
+            <li>We introduce only doctors whose registration and Medicare position fits the role. No guarantees on timing: Ahpra, the Colleges and Services Australia make the decisions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FORM B: REQUEST A DOCTOR ================= -->
+    <section class="section" aria-label="Request a doctor form">
+      <div class="container">
+        <!--
+          Netlify Forms. Detected at deploy time from data-netlify="true".
+          Submissions appear in Netlify -> Forms -> request-doctor.
+        -->
+        <form id="request-form" class="form-grid" name="request-doctor" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" data-validate novalidate>
+          <input type="hidden" name="form-name" value="request-doctor">
+          <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+
+          <p class="form-section-title">Your practice</p>
+
+          <div class="field">
+            <label for="practice-name">Practice name <span aria-hidden="true">*</span></label>
+            <input type="text" id="practice-name" name="practice_name" autocomplete="organization" aria-describedby="practice-name-error" required>
+            <p class="error-message" id="practice-name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="abn">ABN <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="abn-hint">11 digits.</span>
+            <input type="text" id="abn" name="abn" inputmode="numeric" autocomplete="off" aria-describedby="abn-hint abn-error" required>
+            <p class="error-message" id="abn-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="address">Street address of the practice <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="address-help">We ask for your street address because Distribution Priority Area status is set across GP catchments, not suburbs. We verify it before we shortlist, so we never send you a doctor you cannot legally engage.</span>
+            <textarea id="address" name="street_address" rows="3" autocomplete="street-address" aria-describedby="address-help address-error" required></textarea>
+            <p class="error-message" id="address-error" role="alert"></p>
+          </div>
+
+          <p class="form-section-title">Your contact</p>
+
+          <div class="field">
+            <label for="contact-name">Contact name <span aria-hidden="true">*</span></label>
+            <input type="text" id="contact-name" name="contact_name" autocomplete="name" aria-describedby="contact-name-error" required>
+            <p class="error-message" id="contact-name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-role">Your role at the practice <span aria-hidden="true">*</span></label>
+            <input type="text" id="contact-role" name="contact_role" autocomplete="organization-title" aria-describedby="contact-role-error" required>
+            <p class="error-message" id="contact-role-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="contact-email" name="email" autocomplete="email" inputmode="email" aria-describedby="contact-email-error" required>
+            <p class="error-message" id="contact-email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-phone">Phone <span aria-hidden="true">*</span></label>
+            <input type="tel" id="contact-phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="contact-phone-error" required>
+            <p class="error-message" id="contact-phone-error" role="alert"></p>
+          </div>
+
+          <p class="form-section-title">The position</p>
+
+          <div class="field">
+            <label for="position-type">Position type <span aria-hidden="true">*</span></label>
+            <select id="position-type" name="position_type" aria-describedby="position-type-error" required>
+              <option value="">Please select</option>
+              <option>Locum</option>
+              <option>Part-time</option>
+              <option>Full-time</option>
+              <option>Contract</option>
+            </select>
+            <p class="error-message" id="position-type-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="sessions">Sessions <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="sessions-hint">For example &ldquo;8 sessions per week&rdquo; or &ldquo;3 days a week&rdquo;.</span>
+            <input type="text" id="sessions" name="sessions" aria-describedby="sessions-hint sessions-error" required>
+            <p class="error-message" id="sessions-error" role="alert"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Vocational registration required? <span aria-hidden="true">*</span></legend>
+            <div class="radio-group" aria-describedby="vr-required-error">
+              <label><input type="radio" name="vr_required" value="Yes" required> Yes</label>
+              <label><input type="radio" name="vr_required" value="No" required> No</label>
+              <label><input type="radio" name="vr_required" value="Either" required> Either</label>
+            </div>
+            <p class="error-message" id="vr-required-error" role="alert"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="existing-img">Existing IMG or registrar employees <span aria-hidden="true">*</span></label>
+            <select id="existing-img" name="existing_img_or_registrars" aria-describedby="existing-img-error" required>
+              <option value="">Please select</option>
+              <option>None</option>
+              <option>One</option>
+              <option>Two or more</option>
+            </select>
+            <p class="error-message" id="existing-img-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="supervision">Supervision capacity <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="supervision-hint">A doctor on limited or provisional registration needs a Board-approved supervisor at the practice.</span>
+            <select id="supervision" name="supervision_capacity" aria-describedby="supervision-hint supervision-error" required>
+              <option value="">Please select</option>
+              <option>Yes, an approved supervisor is available</option>
+              <option>Possibly, we have senior GPs but have not supervised before</option>
+              <option>No</option>
+              <option>Not sure</option>
+            </select>
+            <p class="error-message" id="supervision-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="timeframe">Timeframe <span aria-hidden="true">*</span></label>
+            <select id="timeframe" name="timeframe" aria-describedby="timeframe-error" required>
+              <option value="">Please select</option>
+              <option>As soon as possible</option>
+              <option>Within 3 months</option>
+              <option>3 to 6 months</option>
+              <option>Planning ahead, 6 months or more</option>
+            </select>
+            <p class="error-message" id="timeframe-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="notes">Anything else <span class="hint">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+          </div>
+
+          <p class="form-section-title">Consent</p>
+
+          <div class="field">
+            <div class="field-checkbox">
+              <input type="checkbox" id="consent" name="consent" value="Given" aria-describedby="consent-error" required data-error="Please tick the consent box so we can act on this request.">
+              <label for="consent">I consent to Drs Rego collecting these details to assess and respond to this request, including checking the practice address against public workforce classifications, as described in the <a href="/privacy.html">Privacy Policy</a>. <span aria-hidden="true">*</span></label>
+            </div>
+            <p class="error-message" id="consent-error" role="alert"></p>
+          </div>
+
+          <p class="form-footnote">You can unsubscribe from our emails or withdraw this consent at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. Drs Rego does not provide immigration or visa advice. Where a role involves sponsorship, that is referred to a registered migration agent.</p>
+
+          <div>
+            <button type="submit" class="btn">Send request <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
