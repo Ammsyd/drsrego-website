@@ -346,13 +346,16 @@ p {
   background-size: 100% 1px;
 }
 
+/* "Home" is the logo on desktop; the link only appears in the mobile panel */
+.nav-home { display: none; }
+
 /* Keep the long tagline from crowding the nav at mid widths */
-@media (max-width: 78em) {
-  .site-header .brand-tag { max-width: 30ch; }
+@media (max-width: 84em) {
+  .site-header .brand-tag { max-width: 26ch; }
 }
 
 /* Mobile navigation panel */
-@media (max-width: 64em) {
+@media (max-width: 72em) {
   .nav-toggle { display: flex; }
   .site-nav {
     display: none;
@@ -368,6 +371,7 @@ p {
     padding: var(--s-2) var(--s-3) var(--s-4);
   }
   .site-nav.is-open { display: flex; }
+  .nav-home { display: block; }
   .nav-list {
     flex-direction: column;
     align-items: stretch;
@@ -789,7 +793,12 @@ p {
   border-bottom: 1px solid rgba(236, 238, 243, 0.18);
 }
 @media (min-width: 48em) {
-  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (min-width: 64em) {
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
+  .footer-brand { grid-column: auto; }
 }
 
 .footer-brand .brand-logo { height: 38px; margin-bottom: var(--s-1); }

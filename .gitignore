@@ -35,3 +35,6 @@ npm-debug.log*
 
 # --- Claude Code: personal, machine-specific settings ---
 .claude/settings.local.json
+
+# --- Eleventy build output ---
+_site/
