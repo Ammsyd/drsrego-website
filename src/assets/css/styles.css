@@ -349,9 +349,9 @@ p {
 /* "Home" is the logo on desktop; the link only appears in the mobile panel */
 .nav-home { display: none; }
 
-/* Keep the long tagline from crowding the nav at mid widths */
+/* Keep the long tagline to two lines so the header stays one bar tall */
 @media (max-width: 84em) {
-  .site-header .brand-tag { max-width: 26ch; }
+  .site-header .brand-tag { max-width: 38ch; }
 }
 
 /* Mobile navigation panel */
@@ -722,6 +722,7 @@ p {
    9b. JOBS BOARD
    -------------------------------------------------------------------------- */
 .job-hero { padding-bottom: var(--s-3); }
+.job-hero h1 { font-size: clamp(1.875rem, 1.2rem + 2.4vw, 3.25rem); }
 .job-hero .lede { margin-bottom: 0; }
 .job-body { padding-top: var(--s-4); }
 @media (min-width: 60em) { .job-hero { padding-bottom: var(--s-4); } .job-body { padding-top: var(--s-5); } }
@@ -733,7 +734,6 @@ p {
 /* Status notice (filled / closed) */
 .notice {
   border: 1px solid var(--ink);
-  border-left: 4px solid var(--ink);
   border-radius: var(--radius);
   padding: var(--s-2) var(--s-3);
   margin: 0 0 var(--s-3);
@@ -748,7 +748,7 @@ p {
 /* Key facts list */
 .job-summary {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
   gap: var(--s-2) var(--s-3);
   margin: 0 0 var(--s-4);
   padding: var(--s-3) 0;
@@ -768,7 +768,6 @@ p {
 /* Eligibility block: the main conversion point on a job page */
 .eligibility {
   border: 1px solid var(--accent);
-  border-left: 4px solid var(--accent);
   border-radius: var(--radius);
   padding: var(--s-3);
   margin: 0 0 var(--s-5);
@@ -810,6 +809,7 @@ p {
 /* Listing filters */
 .job-filters {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--s-2) var(--s-3);
   align-items: end;
   padding: var(--s-3);
@@ -819,6 +819,8 @@ p {
 }
 @media (min-width: 48em) { .job-filters { grid-template-columns: 1fr 1fr 2fr; } }
 .job-filters .field { margin: 0; }
+.job-filters .field-checkbox { grid-column: 1 / -1; min-height: 44px; align-items: center; }
+@media (min-width: 48em) { .job-filters .field-checkbox { grid-column: auto; } }
 .job-filters .field-checkbox label { font-weight: 500; margin: 0; }
 .job-filters .job-count { grid-column: 1 / -1; margin: 0; font-size: 0.875rem; color: var(--slate); }
 .no-js .job-filters { display: none; }
@@ -851,7 +853,7 @@ p {
 .prose h3 { margin: var(--s-4) 0 var(--s-1); }
 .prose ul, .prose ol { max-width: var(--measure); padding-left: 1.3em; margin: 0 0 var(--s-3); }
 .prose li { margin-bottom: var(--s-1); }
-.prose blockquote { margin: 0 0 var(--s-3); padding-left: var(--s-3); border-left: 3px solid var(--accent); color: var(--slate); }
+.prose blockquote { margin: 0 0 var(--s-3); padding-left: var(--s-3); border-left: 1px solid var(--ink); color: var(--slate); }
 .prose table { border-collapse: collapse; width: 100%; max-width: var(--measure); margin: 0 0 var(--s-3); font-size: 0.9375rem; }
 .prose th, .prose td { text-align: left; padding: var(--s-1) var(--s-2); border-bottom: 1px solid var(--mist); vertical-align: top; }
 .prose th { font-weight: 600; }
@@ -879,10 +881,8 @@ p {
   margin: 0;
 }
 .post-meta .verified {
-  color: var(--ink);
+  color: var(--accent);
   font-weight: 600;
-  border-left: 3px solid var(--accent);
-  padding-left: 0.6em;
 }
 .post-body .prose > p:first-child { font-size: 1.125rem; }
 .sources, .related {

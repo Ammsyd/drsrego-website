@@ -23,8 +23,7 @@ breadcrumb:
       <div class="container">
         <span class="eyebrow">Jobs</span>
         <h1>GP jobs, with the location facts stated up front.</h1>
-        <p class="lede">Every advert here states the location&rsquo;s Modified Monash Model category and Distribution Priority Area status, with the date we checked them, and says plainly whether the role suits a doctor subject to a section 19AB restriction. No other Australian GP job board does that.</p>
-        <p class="source">Classifications are checked on the <a href="{{ regulatory.locator.url }}">{{ regulatory.locator.short }}</a> (Department of Health, Disability and Ageing). Last verified {{ regulatory.locator.verified | dateAU }}. Classifications can change; the date on each advert is the date it was checked.</p>
+        <p class="lede">Every advert states the location&rsquo;s MMM category and DPA status with the date we checked, and says plainly whether the role suits a doctor subject to a section 19AB restriction. Most job boards do not tell you that.</p>
       </div>
     </section>
 
@@ -64,6 +63,7 @@ breadcrumb:
           {%- endfor %}
         </div>
         <p class="job-empty" id="jobs-none" hidden>No roles match those filters. <button type="button" class="link-arrow" data-job-reset>Show all roles</button></p>
+        <p class="source" style="margin-top: var(--s-4)">Classifications are checked on the <a href="{{ regulatory.locator.url }}">{{ regulatory.locator.short }}</a> (Department of Health, Disability and Ageing), last verified {{ regulatory.locator.verified | dateAU }}. Classifications can change; the date on each advert is the date it was checked.</p>
         {%- else %}
         <div class="empty-state">
           <h2>No open roles right now.</h2>

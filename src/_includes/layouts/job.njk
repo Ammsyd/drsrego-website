@@ -23,6 +23,9 @@ layout: layouts/base.njk
     <section class="section job-body" aria-label="Position details">
       <div class="container job-grid">
         <div>
+
+          {% include "partials/eligibility.njk" %}
+
           <dl class="job-summary">
             <div><dt>Location</dt><dd>{{ suburb }}, {{ region }}, {{ state }}</dd></div>
             <div><dt>Type</dt><dd>{{ type }}</dd></div>
@@ -34,8 +37,6 @@ layout: layouts/base.njk
             <div><dt>Posted</dt><dd>{{ posted | dateAU }}</dd></div>
             <div><dt>Closes</dt><dd>{{ closes | dateAU }}</dd></div>
           </dl>
-
-          {% include "partials/eligibility.njk" %}
 
           <div class="prose">
 {{ content | safe }}
