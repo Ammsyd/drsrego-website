@@ -31,7 +31,7 @@ Recruitment is now a service. The differentiator is stating DPA and MMM with a v
 - Run `npm ci && npm test`. Both checks should print OK across 13 pages.
 - `src/jobs/example-role.md` and the three posts are `draft: true` on purpose; they never publish until markers are resolved.
 - `SEO-AUDIT.md`, `DEPLOY.md` and `CONTENT.md` are on the branch. A code review was run and its findings fixed (consent error display, checker on deploy, job expiry, sourced statements on the request form, interim privacy wording).
-- Not yet verified: live form submissions in the Netlify dashboard. No deploy preview exists for this branch, so the forms are verified only in local rendering. Check them on the deploy preview before merging (DEPLOY.md, "How to check a form is working").
-- After merging, Netlify needs: form detection enabled, email notifications for the three forms, and (if not already) the repository connected for continuous deployment. DEPLOY.md will spell out the clicks.
+- Verified on the Netlify deploy preview (15 September 2026): every page returns 200, `/thanks.html` redirects with a 301, the security headers are served, and all three forms (`enquiry`, `register-interest`, `request-doctor`) were detected by Netlify and each received a test submission, confirmed via the Netlify API. Delete the three test entries (named "TEST ... delete me") from Netlify → Forms after merging.
+- Netlify is now connected to this repository for continuous deployment (set up 15 September 2026). The repository was made public because Netlify's free plan blocks builds from private repositories unless the contributor is a verified team member.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
