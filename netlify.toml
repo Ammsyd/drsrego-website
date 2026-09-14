@@ -1,0 +1,22 @@
+# netlify.toml: instructions Netlify reads every time it deploys this repo.
+# Settings in this file take priority over the same settings in the Netlify dashboard.
+
+[build]
+  # Folder Netlify publishes as the website. "." means the repository root,
+  # where index.html lives.
+  publish = "."
+
+  # No "command" line on purpose. This is a plain HTML/CSS/JS site that is
+  # already finished, so Netlify has nothing to build: no npm, no Node, no
+  # generator. It simply copies the files above to the web.
+
+# Keep Netlify's "Pretty URLs" switched on, as it already is on the live site.
+# It lets visitors use drsrego.com.au/doctors instead of /doctors.html and
+# rewrites the site's internal links to match at deploy time.
+[build.processing.html]
+  pretty_urls = true
+
+# Nothing else is needed:
+# - Netlify Forms: the "enquiry" form in contact.html is detected automatically.
+# - 404 page: Netlify serves 404.html automatically.
+# - www -> non-www and http -> https redirects: handled by the domain settings.
