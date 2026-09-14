@@ -177,6 +177,7 @@ if (fs.existsSync(regFile)) {
   try {
     const reg = JSON.parse(fs.readFileSync(regFile, "utf8"));
     for (const [key, entry] of Object.entries(reg)) {
+      if (key.startsWith("_")) continue; // notes, not sources
       for (const f of ["label", "url", "verified"]) {
         if (!entry[f]) fail(regFile, `"${key}" is missing "${f}".`);
       }

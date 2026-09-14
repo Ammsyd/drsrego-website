@@ -1,4 +1,4 @@
-# Drs Rego — robots.txt
+# Drs Rego robots.txt
 # All crawlers are welcome, including AI search engines.
 # GPTBot, ClaudeBot, PerplexityBot and Google-Extended are deliberately
 # NOT blocked: as an enquiry-only consultancy, Drs Rego benefits from

@@ -641,6 +641,19 @@ p {
 .faq details[open] summary::after { content: "\2212"; }
 .faq details p { color: var(--slate); margin: var(--s-1) 0 var(--s-2); }
 
+/* Source line under any regulatory statement: link + last verified date */
+.source {
+  font-size: 0.8125rem;
+  color: var(--slate);
+  margin: 0 0 var(--s-2);
+}
+.source a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.faq details .source { font-size: 0.8125rem; margin-top: 0; }
+
 /* Founder / about blocks */
 .about-grid {
   display: grid;
