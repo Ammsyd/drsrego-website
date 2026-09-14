@@ -38,3 +38,6 @@ npm-debug.log*
 
 # --- Eleventy build output ---
 _site/
+
+# --- impeccable design-hook config (tooling, not site content) ---
+.impeccable/
