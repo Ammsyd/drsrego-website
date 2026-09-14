@@ -1,0 +1,20 @@
+{#- Up to three published Insights posts for an audience. Renders nothing while no posts are published.
+    Expects a variable "audience": "doctors" or "practices". -#}
+{%- set pool = collections.postsDoctors if audience == "doctors" else collections.postsPractices %}
+{%- if pool.length %}
+    <!-- ================= RELATED INSIGHTS ================= -->
+    <section class="section" aria-labelledby="related-insights-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Insights</span>
+          <h2 id="related-insights-title">Plain answers, with the source and the date we checked.</h2>
+        </div>
+        <div class="post-grid reveal">
+          {%- for post in pool | head(3) %}
+          {% include "partials/post-card.njk" %}
+          {%- endfor %}
+        </div>
+        <p class="reveal" style="margin-top: var(--s-4)"><a class="link-arrow" href="/insights/">All insights <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    </section>
+{%- endif %}

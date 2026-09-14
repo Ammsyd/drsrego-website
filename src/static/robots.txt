@@ -6,5 +6,6 @@
 
 User-agent: *
 Allow: /
+Disallow: /thank-you.html
 
 Sitemap: https://drsrego.com.au/sitemap.xml
