@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+title: "Insights on Registration, 19AB, DPA and Supervision"
+description: "Plain-English guides for internationally trained doctors and Australian practices. Every regulatory statement links to its source and carries a last-verified date."
+permalink: /insights/
+navSection: insights
+tags: []
+ogType: website
+schemaType: false
+eleventyExcludeFromCollections: true
+breadcrumb:
+  name: Insights
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Insights</span>
+        <h1>Plain answers to the questions that stall registrations and hires.</h1>
+        <p class="lede">Short, practical guides on sections 19AA and 19AB, the 10-year moratorium, DPA catchments, PESCI and supervision. Every regulatory statement links to health.gov.au or the Medical Board and shows the date we last checked it.</p>
+        <nav aria-label="Insights sections">
+          <ul class="jump-list">
+            <li><a href="#for-doctors">For doctors</a></li>
+            <li><a href="#for-practices">For practices</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    {%- set doctors = collections.postsDoctors %}
+    {%- set practices = collections.postsPractices %}
+
+    <!-- ================= FOR DOCTORS ================= -->
+    <section class="section" id="for-doctors" aria-labelledby="for-doctors-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">For doctors</span>
+          <h2 id="for-doctors-title">Registration, Medicare access and pathways.</h2>
+        </div>
+        {%- if doctors.length %}
+        <div class="post-grid">
+          {%- for post in doctors %}
+          {% include "partials/post-card.njk" %}
+          {%- endfor %}
+        </div>
+        {%- else %}
+        <p>The first guides for doctors are being verified against their sources before publication. In the meantime, <a class="link-arrow" href="/contact.html?topic=eligibility">ask us where you sit with section 19AB</a>.</p>
+        {%- endif %}
+      </div>
+    </section>
+
+    <!-- ================= FOR PRACTICES ================= -->
+    <section class="section" id="for-practices" aria-labelledby="for-practices-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">For practices</span>
+          <h2 id="for-practices-title">DPA, supervision and employing IMGs.</h2>
+        </div>
+        {%- if practices.length %}
+        <div class="post-grid">
+          {%- for post in practices %}
+          {% include "partials/post-card.njk" %}
+          {%- endfor %}
+        </div>
+        {%- else %}
+        <p>The first guides for practices are being verified against their sources before publication. In the meantime, see <a class="link-arrow" href="/clinics.html#faq">the practice FAQ</a> or <a class="link-arrow" href="/request-a-doctor/">request a doctor</a>.</p>
+        {%- endif %}
+      </div>
+    </section>
+
+    {% include "partials/ask-us.njk" %}

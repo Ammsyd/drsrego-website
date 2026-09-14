@@ -15,9 +15,9 @@
   "linkedin": "https://www.linkedin.com/company/drsrego/",
   "facebook": "https://www.facebook.com/profile.php?id=61591452797628",
   "author": "Faisal Al-Falah",
-  "defaultImage": "/assets/img/hero-consult-1600.jpg",
-  "defaultImageWidth": 1600,
-  "defaultImageHeight": 1067,
-  "defaultImageAlt": "Two clinicians reviewing patient information together in a modern Australian clinic",
+  "defaultImage": "/assets/img/og-default.png",
+  "defaultImageWidth": 1200,
+  "defaultImageHeight": 630,
+  "defaultImageAlt": "Drs Rego: Australian medical registration, compliance and GP recruitment",
   "copyrightYear": 2026
 }

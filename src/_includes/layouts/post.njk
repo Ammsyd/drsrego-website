@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+---
+{%- set audience = "For doctors" if category == "doctors" else "For practices" -%}
+{%- set kind = "Case study" if type == "case-study" else "Insight" -%}
+
+    <!-- ================= POST HERO ================= -->
+    <section class="page-hero post-hero">
+      <div class="container post-narrow">
+        <p class="breadcrumbs"><a href="/insights/">All insights</a></p>
+        <span class="eyebrow">{{ audience }} &middot; {{ kind }}</span>
+        <h1>{{ title }}</h1>
+        <p class="lede">{{ description }}</p>
+        <p class="post-meta">
+          <span>Published {{ date | dateAU }}</span>
+          <span class="verified">Last verified {{ last_verified | dateAU }}</span>
+          <span>By {{ site.author }}</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= POST BODY ================= -->
+    <article class="section post-body">
+      <div class="container post-narrow">
+        <div class="prose">
+{{ content | safe }}
+        </div>
+
+        {%- if sources and sources.length %}
+        <section class="sources" aria-labelledby="sources-title">
+          <h2 id="sources-title">Sources</h2>
+          <p class="small">Every regulatory statement above is drawn from the pages below. Requirements change; check the source before acting.</p>
+          <ol>
+            {%- for s in sources %}
+            <li><a href="{{ s.url }}">{{ s.label }}</a>, last verified {{ s.verified | dateAU }}.</li>
+            {%- endfor %}
+          </ol>
+        </section>
+        {%- endif %}
+
+        {%- if related and related.length %}
+        <section class="related" aria-labelledby="related-title">
+          <h2 id="related-title">Related services</h2>
+          <ul>
+            {%- for r in related %}
+            <li><a class="link-arrow" href="{{ r.url }}">{{ r.label }} <span class="arrow" aria-hidden="true">&rarr;</span></a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+
+        <p class="post-disclaimer small">This article is general information, not professional, legal or migration advice. Drs Rego does not provide immigration or visa advice. Registration, exemption and provider-number decisions are made by Ahpra, the Medical Board of Australia, the Colleges and Services Australia.</p>
+      </div>
+    </article>
+
+    {% include "partials/ask-us.njk" %}
+
+    <!-- ================= MORE INSIGHTS ================= -->
+    {%- set others = [] %}
+    {%- for p in collections.posts %}{% if p.url != page.url and others.length < 3 %}{% set _ = others.push(p) %}{% endif %}{% endfor %}
+    {%- if others.length %}
+    <section class="section" aria-labelledby="more-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">More insights</span>
+          <h2 id="more-title">Keep reading.</h2>
+        </div>
+        <div class="post-grid">
+          {%- for post in others %}
+          {% include "partials/post-card.njk" %}
+          {%- endfor %}
+        </div>
+      </div>
+    </section>
+    {%- endif %}

@@ -863,6 +863,54 @@ p {
 .jump-list a:hover { border-bottom-color: var(--accent); }
 
 /* --------------------------------------------------------------------------
+   9c. INSIGHTS
+   -------------------------------------------------------------------------- */
+.post-narrow { max-width: 52rem; }
+.post-hero { padding-bottom: var(--s-3); }
+.post-hero h1 { font-size: clamp(2rem, 1.2rem + 2.8vw, 3.5rem); }
+.post-body { padding-top: var(--s-4); }
+@media (min-width: 60em) { .post-hero { padding-bottom: var(--s-4); } .post-body { padding-top: var(--s-5); } }
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  font-size: 0.875rem;
+  color: var(--slate);
+  margin: 0;
+}
+.post-meta .verified {
+  color: var(--ink);
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.6em;
+}
+.post-body .prose > p:first-child { font-size: 1.125rem; }
+.sources, .related {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--mist);
+}
+.sources h2, .related h2 { font-size: 1.25rem; margin-bottom: var(--s-2); }
+.sources ol { padding-left: 1.3em; max-width: var(--measure); font-size: 0.9375rem; color: var(--slate); }
+.sources li { margin-bottom: var(--s-1); }
+.sources a { color: var(--accent); }
+.related ul { list-style: none; padding: 0; margin: 0; }
+.related li { margin-bottom: var(--s-1); }
+.post-disclaimer { color: var(--slate); margin-top: var(--s-5); }
+
+.post-grid { display: grid; gap: var(--s-3); }
+@media (min-width: 48em) { .post-grid { grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); } }
+.post-card {
+  border-top: 2px solid var(--ink);
+  padding-top: var(--s-3);
+}
+.post-card h3 { margin-bottom: var(--s-1); }
+.post-card h3 a { color: var(--ink); text-decoration: none; }
+.post-card h3 a:hover { color: var(--accent); }
+.post-card p { margin: 0 0 var(--s-1); font-size: 0.9375rem; color: var(--slate); }
+.post-card-meta { font-size: 0.75rem !important; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent) !important; }
+
+/* --------------------------------------------------------------------------
    10. FORMS
    -------------------------------------------------------------------------- */
 .form-grid {
