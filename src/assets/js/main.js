@@ -1,8 +1,10 @@
-/* Drs Rego — main.js
+/* Drs Rego, main.js
    1. Mobile navigation (toggle, focus trap, Escape to close)
    2. Sticky header hairline on scroll
    3. Scroll reveal (IntersectionObserver, respects prefers-reduced-motion)
-   4. Contact form validation (submission itself is handled by Netlify Forms)
+   4. Form validation for any <form data-validate> (submission itself is
+      handled by Netlify Forms)
+   5. Prefill from the address bar (?topic=eligibility&job=slug)
 */
 (function () {
   "use strict";
@@ -88,60 +90,115 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- 4. Contact form ---------- */
-  var form = document.getElementById("enquiry-form");
-  if (!form) return;
+  /* ---------- 4. Form validation ---------- */
+  var MAX_UPLOAD_BYTES = 8 * 1024 * 1024; // 8 MB, under Netlify's upload limit
+
+  function fieldWrapper(input) {
+    return input.closest(".field, .field-checkbox, fieldset");
+  }
 
   function setError(input, message) {
-    var field = input.closest(".field, .field-checkbox");
-    var errorEl = field && field.querySelector(".error-message");
+    var field = fieldWrapper(input);
+    if (!field) return;
+    var errorEl = field.querySelector(".error-message");
     if (message) {
       field.classList.add("has-error");
       if (errorEl) errorEl.textContent = message;
       input.setAttribute("aria-invalid", "true");
     } else {
       field.classList.remove("has-error");
+      if (errorEl) errorEl.textContent = "";
       input.removeAttribute("aria-invalid");
     }
   }
 
-  function validate() {
-    var firstInvalid = null;
+  function messageFor(input) {
+    var v = input.value.trim();
+    if (input.type === "checkbox") {
+      return input.checked ? "" : (input.getAttribute("data-error") || "Please tick this box to continue.");
+    }
+    if (input.type === "radio") {
+      var group = input.form.querySelectorAll('input[type="radio"][name="' + input.name + '"]');
+      var any = Array.prototype.some.call(group, function (r) { return r.checked; });
+      return any ? "" : "Please choose one option.";
+    }
+    if (input.type === "file") {
+      if (input.hasAttribute("required") && input.files.length === 0) return "Please attach a file.";
+      if (input.files.length && input.files[0].size > MAX_UPLOAD_BYTES) return "Please upload a file under 8 MB.";
+      return "";
+    }
+    if (input.hasAttribute("required") && !v) return "Please complete this field.";
+    if (input.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+      return "Please enter a valid email address, e.g. name@example.com.";
+    }
+    return "";
+  }
 
-    form.querySelectorAll("[required]").forEach(function (input) {
-      var message = "";
-      if (input.type === "checkbox") {
-        if (!input.checked) message = "Please tick this box so we can respond to your enquiry.";
-      } else if (!input.value.trim()) {
-        message = "Please complete this field.";
-      } else if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
-        message = "Please enter a valid email address, e.g. name@example.com.";
+  function validateForm(form) {
+    var firstInvalid = null;
+    var seenRadioGroups = {};
+    form.querySelectorAll("[required], input[type=file]").forEach(function (input) {
+      if (input.type === "radio") {
+        if (seenRadioGroups[input.name]) return;
+        seenRadioGroups[input.name] = true;
       }
+      var message = messageFor(input);
       setError(input, message);
       if (message && !firstInvalid) firstInvalid = input;
     });
-
     if (firstInvalid) firstInvalid.focus();
     return !firstInvalid;
   }
 
-  // Validate on blur once a field has been touched
-  form.addEventListener(
-    "blur",
-    function (e) {
+  document.querySelectorAll("form[data-validate]").forEach(function (form) {
+    // Validate a field once it has been touched
+    form.addEventListener("blur", function (e) {
       var input = e.target;
-      if (input.matches && input.matches("[required]") && input.value !== "") {
-        validate();
+      if (input.matches && input.matches("[required], input[type=file]") && input.type !== "radio") {
+        setError(input, messageFor(input));
       }
-    },
-    true
-  );
+    }, true);
 
-  // Block submission only when invalid; a valid form submits natively so
-  // Netlify Forms can capture it and redirect to the form's action URL.
-  form.addEventListener("submit", function (e) {
-    if (!validate()) {
-      e.preventDefault();
-    }
+    form.addEventListener("change", function (e) {
+      var input = e.target;
+      if (input.type === "file" || input.type === "checkbox" || input.type === "radio") {
+        setError(input, messageFor(input));
+      }
+    });
+
+    // Block submission only when invalid; a valid form submits natively so
+    // Netlify Forms can capture it and redirect to the form's action URL.
+    form.addEventListener("submit", function (e) {
+      if (!validateForm(form)) e.preventDefault();
+    });
   });
+
+  /* ---------- 5. Prefill from the address bar ---------- */
+  // /contact.html?topic=eligibility&job=<slug> and /register-your-interest/?job=<slug>
+  var params = new URLSearchParams(window.location.search);
+  var topic = params.get("topic");
+  var job = params.get("job");
+  if (topic || job) {
+    var topicInput = document.querySelector('input[name="topic"]');
+    var jobInput = document.querySelector('input[name="job"]');
+    if (topicInput && topic) topicInput.value = topic;
+    if (jobInput && job) jobInput.value = job;
+
+    var role = document.getElementById("role");
+    if (role && topic === "eligibility") role.value = "Doctor";
+
+    var message = document.getElementById("message");
+    if (message && topic === "eligibility" && !message.value) {
+      message.value = "I would like to check my section 19AB position" +
+        (job ? " for the role: " + job.replace(/-/g, " ") : "") +
+        ". I trained in [country], was first registered in Australia in [month and year], and would like to work in [location].";
+    }
+
+    var jobNote = document.querySelector("[data-job-note]");
+    if (jobNote && job) {
+      jobNote.hidden = false;
+      var slot = jobNote.querySelector("[data-job-slot]");
+      if (slot) slot.textContent = job.replace(/-/g, " ");
+    }
+  }
 })();

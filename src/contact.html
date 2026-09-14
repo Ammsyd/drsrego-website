@@ -34,19 +34,22 @@ imageAlt: Hands working across laptops and application paperwork
           NOTE: if this site is ever moved off Netlify, this form will stop
           capturing submissions; reconnect it to a form service (e.g. Formspree).
         -->
-        <form id="enquiry-form" class="form-grid" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
+        <form id="enquiry-form" class="form-grid" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" data-validate novalidate>
           <input type="hidden" name="form-name" value="enquiry">
+          <input type="hidden" name="topic" value="">
+          <input type="hidden" name="job" value="">
           <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+          <p class="notice" data-job-note hidden>You are asking about the role: <strong data-job-slot></strong>. We will check your section 19AB position against that location before replying.</p>
           <div class="field">
             <label for="name">Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-            <p class="error-message" role="alert"></p>
+            <input type="text" id="name" name="name" aria-describedby="name-error" autocomplete="name" required>
+            <p class="error-message" id="name-error" role="alert"></p>
           </div>
 
           <div class="field">
             <label for="email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
-            <p class="error-message" role="alert"></p>
+            <input type="email" id="email" name="email" aria-describedby="email-error" autocomplete="email" inputmode="email" required>
+            <p class="error-message" id="email-error" role="alert"></p>
           </div>
 
           <div class="field">
@@ -56,28 +59,28 @@ imageAlt: Hands working across laptops and application paperwork
 
           <div class="field">
             <label for="role">I am a&hellip; <span aria-hidden="true">*</span></label>
-            <select id="role" name="role" required>
+            <select id="role" name="role" aria-describedby="role-error" required>
               <option value="">Please select</option>
               <option value="Doctor">Doctor</option>
               <option value="Clinic or practice manager">Clinic or practice manager</option>
               <option value="Referral partner">Referral partner</option>
               <option value="Other">Other</option>
             </select>
-            <p class="error-message" role="alert"></p>
+            <p class="error-message" id="role-error" role="alert"></p>
           </div>
 
           <div class="field">
             <label for="message">Where are you in the process? <span aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" required></textarea>
-            <p class="error-message" role="alert"></p>
+            <textarea id="message" name="message" aria-describedby="message-error" required></textarea>
+            <p class="error-message" id="message-error" role="alert"></p>
           </div>
 
           <div class="field">
             <div class="field-checkbox">
-              <input type="checkbox" id="consent" name="consent" required>
-              <label for="consent">I consent to Drs Rego collecting the details above to respond to my enquiry, as described in the <a href="/privacy.html">Privacy Policy</a>. <span aria-hidden="true">*</span></label>
+              <input type="checkbox" id="consent" name="consent" aria-describedby="consent-error" required data-error="Please tick this box so we can respond to your enquiry.">
+              <label for="consent">I consent to Drs Rego collecting the details above to respond to my enquiry, as described in the <a href="/privacy.html">Privacy Policy</a>. I can withdraw this consent or unsubscribe at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. <span aria-hidden="true">*</span></label>
             </div>
-            <p class="error-message" role="alert"></p>
+            <p class="error-message" id="consent-error" role="alert"></p>
           </div>
 
           <div>
