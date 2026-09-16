@@ -111,6 +111,36 @@ The main pages are the `.html` files in `src/` (`index.html` is the home page, `
 
 The header, footer and navigation live once, in `src/_includes/partials/header.njk` and `footer.njk`. Business details (phone, email, ABN) live in `src/_data/site.json`.
 
+## Adding a photo to a page
+
+Photos on this site come from **Unsplash** (unsplash.com) or **Pexels** (pexels.com). Both are free for commercial use and neither requires payment or credit, though we record where each photo came from in `src/assets/img/CREDITS.txt` as a courtesy and a record.
+
+To add one:
+
+1. Find a photo on Unsplash or Pexels. Avoid anything that implies it is a specific practice, doctor or patient when it is not. Avoid American scrubs and stethoscope-on-keyboard cliches.
+2. Download the largest version and save it into `src/assets/img/src/` with a short, descriptive, lowercase name such as `waiting-room.jpg`.
+3. Make the six sizes the site needs. On your computer, in the website folder:
+
+```bash
+python -c "from PIL import Image; b='waiting-room'; im=Image.open(f'src/assets/img/src/{b}.jpg').convert('RGB'); [ (lambda v,w: (v.save(f'src/assets/img/{b}-{w}.webp','WEBP',quality=78), v.save(f'src/assets/img/{b}-{w}.jpg','JPEG',quality=78,optimize=True,progressive=True)))(im.resize((w, round(im.height*w/im.width)), Image.LANCZOS), w) for w in (480,960,1600)]; print('done', im.size)"
+```
+
+4. Add a line to `src/assets/img/CREDITS.txt` with the file name and the photo's web address.
+5. Copy a `<figure class="img-card">` block from any existing page, change the file name, set `height` to the number the command printed for the 960 width, and write an `alt` description of what the photo actually shows. The alt text is read aloud to people using screen readers, so describe the picture, do not stuff it with keywords.
+
+If that feels like too much, just tell me the page and the kind of photo you want and I will do it.
+
+## Asking me to make a change
+
+For anything beyond adding content, the fastest route is to tell me in plain words. You do not need to know which file it lives in. Useful requests sound like:
+
+- "On the practices page, the third service block should say supervision capacity, not supervisor capacity."
+- "The home page hero photo is too dark, swap it for something brighter."
+- "Add a question to the doctors FAQ about the competent authority pathway."
+- "The phone number changed to 02 1234 5678."
+
+Send a screenshot if it is easier than describing it. I make the change on a branch, you get a preview link, and it goes live when you say so. Small wording fixes take a couple of minutes.
+
 ## When something does not work
 
 **The deploy failed.** Netlify, Deploys, click the failed one, scroll to the bottom. The checker prints one line per problem, starting with ✗, naming the file and the fix. The three most common:

@@ -4,13 +4,17 @@ title: "Request a Doctor for Your Practice"
 description: "Ask Drs Rego to find a GP for your practice. We verify your DPA and MMM status and the doctor's section 19AB position before we shortlist anyone."
 permalink: /request-a-doctor/
 navSection: practices
+preloadImage:
+  srcset: /assets/img/gp-at-desk-480.webp 480w, /assets/img/gp-at-desk-960.webp 960w
+  sizes: '(min-width: 60em) 40vw, 100vw'
 breadcrumb:
   parent: { name: "For Practices", url: "/clinics.html" }
   name: Request a doctor
 ---
     <!-- ================= PAGE HERO ================= -->
     <section class="page-hero">
-      <div class="container">
+      <div class="container hero-grid">
+        <div>
         <span class="eyebrow">For practices</span>
         <h1>Request a doctor for your practice.</h1>
         <p class="lede">Tell us about the role. We verify your location&rsquo;s DPA and MMM status and each doctor&rsquo;s section 19AB position before we shortlist, so we never send you a doctor you cannot legally engage.</p>
@@ -23,11 +27,20 @@ breadcrumb:
           </ul>
           <p class="source">Sources: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}; <a href="{{ regulatory.supervision.url }}">{{ regulatory.supervision.short }}</a>, last verified {{ regulatory.supervision.verified | dateAU }}.</p>
         </div>
+          <p class="form-jump"><a class="link-arrow" href="#form">Go straight to the form <span class="arrow" aria-hidden="true">&darr;</span></a></p>
+        </div>
+        <figure class="img-card">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/gp-at-desk-480.webp 480w, /assets/img/gp-at-desk-960.webp 960w" sizes="(min-width: 60em) 40vw, 100vw">
+            <img class="photo" src="/assets/img/gp-at-desk-960.jpg" srcset="/assets/img/gp-at-desk-480.jpg 480w, /assets/img/gp-at-desk-960.jpg 960w" sizes="(min-width: 60em) 40vw, 100vw" width="960" height="540" alt="A smiling GP at his desk in a modern general practice consulting room" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption class="img-label">Your practice</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ================= FORM B: REQUEST A DOCTOR ================= -->
-    <section class="section" aria-label="Request a doctor form">
+    <section class="section" id="form" aria-label="Request a doctor form">
       <div class="container">
         <!--
           Netlify Forms. Detected at deploy time from data-netlify="true".

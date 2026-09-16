@@ -19,5 +19,7 @@
   "defaultImageWidth": 1200,
   "defaultImageHeight": 630,
   "defaultImageAlt": "Drs Rego: Australian medical registration, compliance and GP recruitment",
-  "copyrightYear": 2026
+  "copyrightYear": 2026,
+  "analyticsId": "",
+  "_analyticsNote": "Paste your Google Analytics 4 Measurement ID here (looks like G-XXXXXXXXXX). While this is empty, no analytics code is sent to visitors at all."
 }

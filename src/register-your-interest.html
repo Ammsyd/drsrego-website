@@ -4,13 +4,17 @@ title: "Register Your Interest in GP Roles"
 description: "Tell Drs Rego where you are with registration and where you want to work. We check your section 19AB position first and share nothing without your approval."
 permalink: /register-your-interest/
 navSection: doctors
+preloadImage:
+  srcset: /assets/img/doctor-portrait-480.webp 480w, /assets/img/doctor-portrait-960.webp 960w
+  sizes: '(min-width: 60em) 40vw, 100vw'
 breadcrumb:
   parent: { name: "For Doctors", url: "/doctors.html" }
   name: Register your interest
 ---
     <!-- ================= PAGE HERO ================= -->
     <section class="page-hero">
-      <div class="container">
+      <div class="container hero-grid">
+        <div>
         <span class="eyebrow">For doctors</span>
         <h1>Register your interest in GP roles.</h1>
         <p class="lede">Tell us where you are with registration and where you would like to work. We read every registration ourselves.</p>
@@ -22,11 +26,20 @@ breadcrumb:
             <li>Nothing identifying goes to any practice without your further approval.</li>
           </ul>
         </div>
+          <p class="form-jump"><a class="link-arrow" href="#form">Go straight to the form <span class="arrow" aria-hidden="true">&darr;</span></a></p>
+        </div>
+        <figure class="img-card">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/doctor-portrait-480.webp 480w, /assets/img/doctor-portrait-960.webp 960w" sizes="(min-width: 60em) 40vw, 100vw">
+            <img class="photo" src="/assets/img/doctor-portrait-960.jpg" srcset="/assets/img/doctor-portrait-480.jpg 480w, /assets/img/doctor-portrait-960.jpg 960w" sizes="(min-width: 60em) 40vw, 100vw" width="960" height="1200" alt="A doctor in scrubs smiling in a clinic corridor" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption class="img-label">Your next role</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ================= FORM A: REGISTER INTEREST ================= -->
-    <section class="section" aria-label="Register your interest form">
+    <section class="section" id="form" aria-label="Register your interest form">
       <div class="container">
         <!--
           Netlify Forms. Detected at deploy time from data-netlify="true".

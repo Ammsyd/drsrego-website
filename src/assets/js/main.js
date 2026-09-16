@@ -4,7 +4,8 @@
    3. Scroll reveal (IntersectionObserver, respects prefers-reduced-motion)
    4. Form validation for any <form data-validate> (submission itself is
       handled by Netlify Forms)
-   5. Prefill from the address bar (?topic=eligibility&job=slug)
+   5. Conversion counting for the Ask us buttons (only when analytics is on)
+   6. Prefill from the address bar (?topic=eligibility&job=slug)
 */
 (function () {
   "use strict";
@@ -173,7 +174,24 @@
     });
   });
 
-  /* ---------- 5. Prefill from the address bar ---------- */
+  /* ---------- 5. Conversion counting (only if analytics is switched on) ---------- */
+  // Records which call to action people actually use. No personal data is sent.
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest("a.btn, a.link-arrow");
+    if (!link || typeof window.gtag !== "function") return;
+    var where = link.closest(".eligibility") ? "eligibility_block"
+      : link.closest(".ask-us") ? "ask_us_band"
+      : link.closest(".job-actions") ? "job_page"
+      : link.closest(".empty-state") ? "jobs_empty_state"
+      : "other";
+    window.gtag("event", "cta_click", {
+      cta_text: (link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60),
+      cta_location: where,
+      link_url: link.getAttribute("href")
+    });
+  });
+
+  /* ---------- 6. Prefill from the address bar ---------- */
   // /contact.html?topic=eligibility&job=<slug> and /register-your-interest/?job=<slug>
   var params = new URLSearchParams(window.location.search);
   var topic = params.get("topic");
