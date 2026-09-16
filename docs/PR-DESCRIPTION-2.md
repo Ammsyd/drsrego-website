@@ -1,4 +1,4 @@
-# Pull request: photos, analytics, supervisor form and the verification page
+﻿# Pull request: photos, analytics, supervisor form and the verification page
 
 Open the PR here: https://github.com/Ammsyd/drsrego-website/compare/main...feature/photos-analytics-supervisors?expand=1
 
@@ -24,11 +24,13 @@ Photos, analytics, supervisor form and the DPA verification page
 **Photos**
 
 - Hero photos added to the jobs listing, the insights listing and all three form pages, plus the two new pages.
-- Two new Unsplash photos (`gp-consult`, `supervision-talk`), both recorded in `CREDITS.txt`. The rest reuse photos already in the repository, including the two that were sitting unused.
+- Four new Unsplash photos, each checked visually before use: `gp-consult-room` (jobs), `gp-at-desk` (request a doctor), `doctor-desk-certificates` (insights) and `clinicians-review` (supervisor). All free-licence and recorded in `CREDITS.txt`. The earlier choices were replaced after review: one showed a dental surgery and the others looked dated.
 - Hero photos are now cropped to a consistent shape (3:2 on desktop, 16:9 on mobile), the same treatment the homepage funnel cards already used. Without it a portrait photo pushed the register-your-interest form 1477px down a phone screen.
 - **Job advert pages deliberately carry no photo.** A stock image on a specific vacancy implies a practice we are not actually showing.
 
 **Smaller things**
+
+- The supervisor form is now linked from the practices page in three places (jump list, supervisor matching section, request-a-doctor band), not only the footer.
 
 - "Template for review: have this checked by your lawyer" removed from the privacy and terms pages.
 - A "Go straight to the form" link on each form page, for people who do not need the preamble.
@@ -44,7 +46,8 @@ Three of these came off the "worth building" list after the first release: analy
 
 - `npm ci && npm test` should print Content OK and Site OK across 15 pages.
 - Nothing is published that was not already: the three Insights posts and the example job remain drafts.
-- After merging, the new `supervisor-interest` form appears in Netlify → Forms on first submission. The existing email notification hook already covers all forms, so no new setup is needed.
+- After merging, the new `supervisor-interest` form appears in Netlify â†’ Forms on first submission. The existing email notification hook already covers all forms, so no new setup is needed.
 - Analytics stays dormant until a Measurement ID is added.
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+ðŸ¤– Generated with [Claude Code](https://claude.com/claude-code)
+

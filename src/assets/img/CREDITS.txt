@@ -15,7 +15,7 @@ File (basename)      Unsplash photo ID / source URL
 hero-consult         https://images.unsplash.com/photo-1666214280557-f1b5022eb634
 doctor-phone         https://images.unsplash.com/photo-1576091160399-112ba8d25d1d
 doctor-portrait      https://images.unsplash.com/photo-1622253692010-333f2da6031d
-clinic-interior      https://images.unsplash.com/photo-1629909613654-28e377c37b09  (no longer in use; kept as spare)
+clinic-interior      https://images.unsplash.com/photo-1629909613654-28e377c37b09  (not in use: shows a dental surgery, unsuitable for a GP site)
 clinic-meeting       https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0
 clinic-team          https://images.unsplash.com/photo-1580281657527-47f249e8f4df
 outback-road         https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8
@@ -24,8 +24,11 @@ docs-signing         https://images.unsplash.com/photo-1450101499163-c8848c66ca8
 desk-laptop          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
 desk-writing         https://images.unsplash.com/photo-1434030216411-0b793f4b4173
 
-gp-consult           https://images.unsplash.com/photo-1631217868264-e5b90bb7e133
-supervision-talk     https://images.unsplash.com/photo-1758273240360-76b908e7582a
+
+gp-consult-room      https://images.unsplash.com/photo-1758691463198-dc663b8a64e4
+gp-at-desk           https://images.unsplash.com/photo-1758691463384-771db2f192b3
+doctor-desk-certificates https://images.unsplash.com/photo-1675270855267-3c73bfd13849
+clinicians-review    https://images.unsplash.com/photo-1666886573440-16ac24f89e31
 
 Originals are kept in assets/img/src/. Responsive variants (480/960/1600px,
 WebP + JPEG) were generated at quality 78.

@@ -558,6 +558,16 @@ p {
   text-align: center;
 }
 .cta-band h2 { color: var(--paper); }
+.cta-band .cta-band-secondary {
+  margin: var(--s-4) auto 0;
+  font-size: 0.9375rem;
+}
+.cta-band .cta-band-secondary a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.service-links { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); }
 .cta-band p {
   color: var(--mist);
   margin-inline: auto;
