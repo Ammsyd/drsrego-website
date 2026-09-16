@@ -1,4 +1,4 @@
-﻿# Pull request: photos, analytics, supervisor form and the verification page
+# Pull request: photos, analytics, supervisor form and the verification page
 
 Open the PR here: https://github.com/Ammsyd/drsrego-website/compare/main...feature/photos-analytics-supervisors?expand=1
 
@@ -31,7 +31,6 @@ Photos, analytics, supervisor form and the DPA verification page
 **Smaller things**
 
 - The supervisor form is now linked from the practices page in three places (jump list, supervisor matching section, request-a-doctor band), not only the footer.
-
 - "Template for review: have this checked by your lawyer" removed from the privacy and terms pages.
 - A "Go straight to the form" link on each form page, for people who do not need the preamble.
 - `docs/SKILLS-PROMPT.md`: a prompt to paste into the Drs Rego project chat that builds two content skills, one for website content by type and one for job adverts, each producing the markdown file plus a LinkedIn company caption plus a personal repost caption plus an image brief.
@@ -46,8 +45,8 @@ Three of these came off the "worth building" list after the first release: analy
 
 - `npm ci && npm test` should print Content OK and Site OK across 15 pages.
 - Nothing is published that was not already: the three Insights posts and the example job remain drafts.
-- After merging, the new `supervisor-interest` form appears in Netlify â†’ Forms on first submission. The existing email notification hook already covers all forms, so no new setup is needed.
+- After merging, the new `supervisor-interest` form appears in Netlify → Forms on first submission. The existing email notification hook already covers all forms, so no new setup is needed.
 - Analytics stays dormant until a Measurement ID is added.
 
-ðŸ¤– Generated with [Claude Code](https://claude.com/claude-code)
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
