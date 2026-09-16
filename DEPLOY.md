@@ -54,7 +54,7 @@ If the netlify comment says the build **failed**, click **Details**, scroll to t
 
 ## Forms: what to click in Netlify
 
-There are three forms: `enquiry` (contact page), `register-interest` (doctors) and `request-doctor` (practices). Netlify finds them automatically when it builds the site, but two things have to be switched on in the dashboard.
+There are four forms: `enquiry` (contact page), `register-interest` (doctors), `request-doctor` (practices) and `supervisor-interest` (supervisors). Netlify finds them automatically when it builds the site, but two things have to be switched on in the dashboard.
 
 **Enable form detection (once):**
 1. Site configuration, then **Forms** in the left menu.
@@ -63,8 +63,10 @@ There are three forms: `enquiry` (contact page), `register-interest` (doctors) a
 **Get an email for every submission (once per form):**
 1. Site configuration, then **Notifications** (in some accounts this is under Site configuration, then Emails and webhooks).
 2. Under **Form submission notifications**, click **Add notification**, then **Email notification**.
-3. Event to listen for: **New form submission**. Form: pick one of the three. Email to notify: `info@drsrego.com.au`. Save.
-4. Repeat for the other two forms.
+3. Event to listen for: **New form submission**. Form: leave it set to all forms if the option exists, otherwise pick one. Email to notify: `info@drsrego.com.au`. Save.
+4. If you had to pick a single form, repeat for the other three.
+
+This was set up on 16 September 2026 and covers all four forms with one notification.
 
 **Where submissions live:** click **Forms** in the left menu, then the form name. Every submission is listed with every field. For `register-interest`, the uploaded CV appears as a link in the submission. Netlify also has a **Spam** tab; check it occasionally, because the automatic filter is sometimes too keen.
 

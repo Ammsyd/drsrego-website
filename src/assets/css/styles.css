@@ -590,6 +590,17 @@ p {
 /* Page hero (inner pages) */
 .page-hero { padding-block: var(--s-6) var(--s-7); }
 .page-hero .lede { max-width: 62ch; }
+/* Hero photos are cropped to a consistent landscape shape, the same treatment
+   the homepage funnel cards use. Without this, a portrait photo pushes the
+   content of the page (on a form page, the form itself) far down on a phone. */
+.page-hero .img-card img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+@media (max-width: 60em) {
+  .page-hero .img-card { margin-top: var(--s-4); }
+  .page-hero .img-card img { aspect-ratio: 16 / 9; }
+}
 @media (min-width: 60em) { .page-hero { padding-block: var(--s-7); } }
 
 /* Service detail sections — numbered, hairline-divided */
@@ -1012,7 +1023,10 @@ h2.form-section-title { line-height: 1.4; text-wrap: normal; }
   padding-top: var(--s-3);
   border-top: 1px solid var(--mist);
 }
-.form-intro { max-width: var(--measure); margin-bottom: var(--s-4); }
+.form-intro { max-width: var(--measure); margin-bottom: var(--s-2); }
+.form-jump { margin-bottom: var(--s-4); }
+.form-jump .arrow { display: inline-block; transition: transform 0.2s ease; }
+.form-jump a:hover .arrow { transform: translateY(3px); }
 .form-intro ul { padding-left: 1.2em; color: var(--slate); }
 .form-footnote { font-size: 0.875rem; color: var(--slate); max-width: var(--measure); }
 

@@ -1,0 +1,114 @@
+---
+layout: layouts/base.njk
+title: "How We Verify DPA and MMM Before We Shortlist"
+description: "Every Drs Rego advert states the location's MMM category and DPA status with the date we checked. Here is exactly how we check it, and what we do not claim."
+permalink: /how-we-verify/
+navSection: jobs
+preloadImage:
+  srcset: /assets/img/outback-road-480.webp 480w, /assets/img/outback-road-960.webp 960w
+  sizes: '(min-width: 60em) 40vw, 100vw'
+breadcrumb:
+  name: How we verify
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Our method</span>
+          <h1>How we verify DPA and MMM before we shortlist.</h1>
+          <p class="lede">Every advert on our jobs board carries a location classification and the date we checked it. This page explains where that comes from, what it means, and what we deliberately do not claim.</p>
+        </div>
+        <figure class="img-card">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/outback-road-480.webp 480w, /assets/img/outback-road-960.webp 960w" sizes="(min-width: 60em) 40vw, 100vw">
+            <img class="photo" src="/assets/img/outback-road-960.jpg" srcset="/assets/img/outback-road-480.jpg 480w, /assets/img/outback-road-960.jpg 960w" sizes="(min-width: 60em) 40vw, 100vw" width="960" height="664" alt="A sealed road running through red-earth country in Central Australia" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption class="img-label">Catchments, not suburbs</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= WHY IT MATTERS ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why it matters</span>
+          <h2>One wrong classification costs a doctor months, and a practice a hire.</h2>
+        </div>
+        <div class="prose reveal">
+          <p>A doctor subject to a section 19AB restriction generally needs to work in a Distribution Priority Area to access Medicare benefits during the moratorium. If a practice is not in a DPA catchment, the doctor cannot get a provider number for that location, however good the fit. That is not something either side can negotiate around after a contract is signed.</p>
+          <p class="source">Source: <a href="{{ regulatory.s19ab.url }}">{{ regulatory.s19ab.short }}</a>, last verified {{ regulatory.s19ab.verified | dateAU }}.</p>
+          <p>DPA is set by GP catchment, not by suburb or postcode. The Department of Health, Disability and Ageing draws those catchments from patient flows, population, workforce and geography, so two practices in the same suburb can sit in different catchments. A check done on a suburb name is not a check.</p>
+          <p class="source">Source: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>, last verified {{ regulatory.dpa.verified | dateAU }}.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE METHOD ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The method</span>
+          <h2>Four steps, done the same way every time.</h2>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <span class="big-num" aria-hidden="true">01</span>
+            <h3>We ask for the street address</h3>
+            <p>Not the suburb, not the postcode. The full street address of the practice where the doctor would work, because that is the only input that resolves to a single catchment.</p>
+          </div>
+          <div class="step">
+            <span class="big-num" aria-hidden="true">02</span>
+            <h3>We look it up on the Health Workforce Locator</h3>
+            <p>The Department&rsquo;s own tool, which returns the Distribution Priority Area status, the Modified Monash Model category and the remoteness classifications for that address.</p>
+          </div>
+          <div class="step">
+            <span class="big-num" aria-hidden="true">03</span>
+            <h3>We record the result with the date</h3>
+            <p>The classification and the date we checked it go on the advert. If you see MMM 3 and DPA on one of our roles, someone entered that address and read that result on the date shown.</p>
+          </div>
+          <div class="step">
+            <span class="big-num" aria-hidden="true">04</span>
+            <h3>We assess the doctor against it</h3>
+            <p>Date of first Australian registration, residency status and registration type, checked against the location before any introduction is made.</p>
+          </div>
+        </div>
+        <p class="source reveal" style="margin-top: var(--s-4)">Tool: <a href="{{ regulatory.locator.url }}">{{ regulatory.locator.short }}</a>, Department of Health, Disability and Ageing. Last verified {{ regulatory.locator.verified | dateAU }}.</p>
+      </div>
+    </section>
+
+    <!-- ================= WHAT WE DO NOT CLAIM ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Boundaries</span>
+          <h2>What a verified classification does not mean.</h2>
+        </div>
+        <div class="prose reveal">
+          <ul>
+            <li><strong>It is a snapshot, not a guarantee.</strong> DPA is reviewed annually and MMM is updated after each Census. A classification correct in March can change at the next update. That is why every advert shows a date rather than a bare status.</li>
+            <li><strong>It is not an exemption.</strong> Working in a DPA location is the usual route to Medicare access during the moratorium, but the decision sits with the Department and Services Australia, not with us or the practice.</li>
+            <li><strong>It is not a registration outcome.</strong> Ahpra, the Medical Board of Australia and the specialist Colleges decide registration and supervision. We prepare and lodge; they decide.</li>
+            <li><strong>It is not immigration advice.</strong> Where a role involves sponsorship, that goes to a registered migration agent.</li>
+          </ul>
+          <p class="source">Sources: <a href="{{ regulatory.dpa.url }}">{{ regulatory.dpa.short }}</a>; <a href="{{ regulatory.mmm.url }}">{{ regulatory.mmm.short }}</a>; <a href="{{ regulatory.s19ab_exemptions.url }}">{{ regulatory.s19ab_exemptions.short }}</a>. All last verified {{ regulatory.dpa.verified | dateAU }}.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHECK IT YOURSELF ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Do it yourself</span>
+          <h2>You do not have to take our word for it.</h2>
+          <p>The Locator is public and free. Enter your practice address and you will see the same result we do. If your figure differs from ours, tell us: either the address resolved differently or the classification has changed since our check, and both are worth knowing.</p>
+        </div>
+        <div class="cta-row reveal">
+          <a class="btn" href="{{ regulatory.locator.url }}">Open the Health Workforce Locator <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" href="/insights/">Read the step-by-step guide <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    {% include "partials/ask-us.njk" %}

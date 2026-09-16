@@ -1,0 +1,192 @@
+---
+layout: layouts/base.njk
+title: "Register as a Supervisor"
+description: "Vocationally registered GPs who can supervise an internationally trained doctor: tell Drs Rego your capacity and we will match you with practices that need one."
+permalink: /supervisor-interest/
+navSection: practices
+preloadImage:
+  srcset: /assets/img/supervision-talk-480.webp 480w, /assets/img/supervision-talk-960.webp 960w
+  sizes: '(min-width: 60em) 40vw, 100vw'
+breadcrumb:
+  parent: { name: "For Practices", url: "/clinics.html" }
+  name: Register as a supervisor
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div>
+        <span class="eyebrow">For supervisors</span>
+        <h1>Register as a supervisor.</h1>
+        <p class="lede">Supervision capacity is the most common reason a good hire stalls. A practice finds the right doctor, then discovers no approved supervisor is available. If you can supervise, we would like to know.</p>
+        <div class="form-intro">
+          <p>What happens next:</p>
+          <ul>
+            <li>We record your details, your capacity and the arrangements you are open to.</li>
+            <li>When a practice near you needs a supervisor, we contact you first and describe the role.</li>
+            <li>Nothing identifying goes to a practice without your approval, and you can withdraw at any time.</li>
+          </ul>
+          <p class="source">Supervision requirements are set by the Medical Board of Australia. Source: <a href="{{ regulatory.supervision.url }}">{{ regulatory.supervision.short }}</a>, last verified {{ regulatory.supervision.verified | dateAU }}.</p>
+        </div>
+          <p class="form-jump"><a class="link-arrow" href="#form">Go straight to the form <span class="arrow" aria-hidden="true">&darr;</span></a></p>
+        </div>
+        <figure class="img-card">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/supervision-talk-480.webp 480w, /assets/img/supervision-talk-960.webp 960w" sizes="(min-width: 60em) 40vw, 100vw">
+            <img class="photo" src="/assets/img/supervision-talk-960.jpg" srcset="/assets/img/supervision-talk-480.jpg 480w, /assets/img/supervision-talk-960.jpg 960w" sizes="(min-width: 60em) 40vw, 100vw" width="960" height="540" alt="Two colleagues in conversation across a table in a modern office" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption class="img-label">Supervision that works</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= FORM: SUPERVISOR INTEREST ================= -->
+    <section class="section" id="form" aria-label="Supervisor registration form">
+      <div class="container">
+        <!--
+          Netlify Forms. Detected at deploy time from data-netlify="true".
+          Submissions appear in Netlify -> Forms -> supervisor-interest.
+        -->
+        <form id="supervisor-form" class="form-grid" name="supervisor-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" data-validate novalidate>
+          <input type="hidden" name="form-name" value="supervisor-interest">
+          <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+
+          <p class="form-required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+          <h2 class="form-section-title">About you</h2>
+
+          <div class="field">
+            <label for="name">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+            <p class="error-message" id="name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-describedby="email-error" required>
+            <p class="error-message" id="email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-error" required>
+            <p class="error-message" id="phone-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="ahpra">Ahpra registration number <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="ahpra-hint">Format: MED0001234567.</span>
+            <input type="text" id="ahpra" name="ahpra_number" autocomplete="off" aria-describedby="ahpra-hint ahpra-error" required>
+            <p class="error-message" id="ahpra-error" role="alert"></p>
+          </div>
+
+          <h2 class="form-section-title">Your registration</h2>
+
+          <fieldset class="field">
+            <legend>Are you vocationally registered? <span aria-hidden="true">*</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="vocationally_registered" value="Yes" aria-describedby="vr-error" required> Yes</label>
+              <label><input type="radio" name="vocationally_registered" value="No" aria-describedby="vr-error" required> No</label>
+            </div>
+            <p class="error-message" id="vr-error" role="alert"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="fellowship">Fellowship <span aria-hidden="true">*</span></label>
+            <select id="fellowship" name="fellowship" aria-describedby="fellowship-error" required>
+              <option value="">Please select</option>
+              <option>FRACGP</option>
+              <option>FACRRM</option>
+              <option>Both FRACGP and FACRRM</option>
+              <option>Other specialist fellowship</option>
+              <option>None</option>
+            </select>
+            <p class="error-message" id="fellowship-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="experience">Years in Australian general practice <span aria-hidden="true">*</span></label>
+            <select id="experience" name="years_experience" aria-describedby="experience-error" required>
+              <option value="">Please select</option>
+              <option>Less than 3 years</option>
+              <option>3 to 5 years</option>
+              <option>5 to 10 years</option>
+              <option>More than 10 years</option>
+            </select>
+            <p class="error-message" id="experience-error" role="alert"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Have you supervised before? <span aria-hidden="true">*</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="supervised_before" value="Yes" aria-describedby="supervised-error" required> Yes</label>
+              <label><input type="radio" name="supervised_before" value="No" aria-describedby="supervised-error" required> No</label>
+            </div>
+            <p class="error-message" id="supervised-error" role="alert"></p>
+          </fieldset>
+
+          <h2 class="form-section-title">Your capacity</h2>
+
+          <div class="field">
+            <label for="practice-location">Practice name and street address <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="practice-location-hint">Where you practise. We check the location&rsquo;s classification the same way we do for every role.</span>
+            <textarea id="practice-location" name="practice_and_address" rows="3" autocomplete="street-address" aria-describedby="practice-location-hint practice-location-error" required></textarea>
+            <p class="error-message" id="practice-location-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="capacity">How many doctors could you supervise? <span aria-hidden="true">*</span></label>
+            <select id="capacity" name="capacity" aria-describedby="capacity-error" required>
+              <option value="">Please select</option>
+              <option>One</option>
+              <option>Two</option>
+              <option>Three or more</option>
+              <option>Depends on the arrangement</option>
+            </select>
+            <p class="error-message" id="capacity-error" role="alert"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Would you consider co-supervision or remote supervision? <span aria-hidden="true">*</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="co_or_remote" value="Yes" aria-describedby="co-remote-error" required> Yes</label>
+              <label><input type="radio" name="co_or_remote" value="No" aria-describedby="co-remote-error" required> No</label>
+              <label><input type="radio" name="co_or_remote" value="Depends" aria-describedby="co-remote-error" required> Depends</label>
+            </div>
+            <p class="error-message" id="co-remote-error" role="alert"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="availability">When could you take someone on? <span aria-hidden="true">*</span></label>
+            <select id="availability" name="availability" aria-describedby="availability-error" required>
+              <option value="">Please select</option>
+              <option>Now</option>
+              <option>Within 3 months</option>
+              <option>3 to 6 months</option>
+              <option>Open to hearing about it anyway</option>
+            </select>
+            <p class="error-message" id="availability-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="notes">Anything else <span class="hint">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+          </div>
+
+          <h2 class="form-section-title">Consent</h2>
+
+          <div class="field">
+            <div class="field-checkbox">
+              <input type="checkbox" id="consent" name="consent" value="Given" aria-describedby="consent-error" required data-error="Please tick the consent box so we can hold your details.">
+              <label for="consent">I consent to Drs Rego collecting and holding these details so that it can contact me about supervision opportunities, as described in the <a href="/privacy.html">Privacy Policy</a>. I understand my details will not be given to a practice without my further approval. <span aria-hidden="true">*</span></label>
+            </div>
+            <p class="error-message" id="consent-error" role="alert"></p>
+          </div>
+
+          <p class="form-footnote">You can unsubscribe from our emails or withdraw this consent at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. Whether you may supervise a particular doctor, and at what level, is decided by the Medical Board of Australia, not by Drs Rego or the practice.</p>
+
+          <div>
+            <button type="submit" class="btn">Register my interest <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+    </section>

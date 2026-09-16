@@ -24,5 +24,8 @@ docs-signing         https://images.unsplash.com/photo-1450101499163-c8848c66ca8
 desk-laptop          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
 desk-writing         https://images.unsplash.com/photo-1434030216411-0b793f4b4173
 
+gp-consult           https://images.unsplash.com/photo-1631217868264-e5b90bb7e133
+supervision-talk     https://images.unsplash.com/photo-1758273240360-76b908e7582a
+
 Originals are kept in assets/img/src/. Responsive variants (480/960/1600px,
 WebP + JPEG) were generated at quality 78.

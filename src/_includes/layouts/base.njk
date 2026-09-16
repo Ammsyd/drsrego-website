@@ -78,6 +78,17 @@
   {%- if extraHead %}
   {{ extraHead | safe }}
   {%- endif %}
+  {%- if site.analyticsId %}
+
+  <!-- Google Analytics 4. Only sent when site.analyticsId is set in src/_data/site.json. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analyticsId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analyticsId }}', { anonymize_ip: true });
+  </script>
+  {%- endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
