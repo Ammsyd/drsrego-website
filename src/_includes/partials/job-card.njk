@@ -1,0 +1,8 @@
+{#- One job card. Expects a variable "job" (a page object from collections.openJobs). -#}
+<article class="job-card" data-state="{{ job.data.state }}" data-type="{{ job.data.type }}" data-img="{{ 'yes' if job.data.img_eligible else 'no' }}" data-dpa="{{ 'yes' if job.data.dpa else 'no' }}" data-vr="{{ 'yes' if job.data.vr_required else 'no' }}">
+  <p class="job-card-meta">{{ job.data.type }} &middot; {{ job.data.suburb }}, {{ job.data.state }}</p>
+  <h3><a href="{{ job.url }}">{{ job.data.title }}</a></h3>
+  <p class="job-card-class">MMM {{ job.data.mmm }} &middot; {% if job.data.dpa %}DPA{% else %}Not DPA{% endif %} &middot; checked {{ job.data.classification_checked | dateAU }}</p>
+  <p class="job-card-elig">{% if job.data.img_eligible %}Suits doctors with or without a section 19AB restriction{% else %}Suits doctors without a section 19AB restriction{% endif %}{% if job.data.vr_required %} &middot; VR required{% endif %}</p>
+  <p class="job-card-posted small">Posted {{ job.data.posted | dateAU }} &middot; closes {{ job.data.closes | dateAU }}</p>
+</article>

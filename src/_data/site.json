@@ -1,0 +1,23 @@
+{
+  "name": "Drs Rego",
+  "legalName": "FFAM Holdings Pty Ltd trading as Drs Rego",
+  "abn": "66 690 668 529",
+  "url": "https://drsrego.com.au",
+  "tagline": "Australian Medical Registration & Compliance Specialists",
+  "description": "Australian medical registration, compliance and GP recruitment consultancy for internationally trained doctors and the practices that employ them.",
+  "email": "info@drsrego.com.au",
+  "phone": "(02) 8281 6694",
+  "phoneHref": "tel:+61282816694",
+  "phoneIntl": "+61 2 8281 6694",
+  "locality": "Sydney",
+  "region": "NSW",
+  "country": "AU",
+  "linkedin": "https://www.linkedin.com/company/drsrego/",
+  "facebook": "https://www.facebook.com/profile.php?id=61591452797628",
+  "author": "Faisal Al-Falah",
+  "defaultImage": "/assets/img/og-default.png",
+  "defaultImageWidth": 1200,
+  "defaultImageHeight": 630,
+  "defaultImageAlt": "Drs Rego: Australian medical registration, compliance and GP recruitment",
+  "copyrightYear": 2026
+}

@@ -1,0 +1,66 @@
+{
+  "_comment": "Source pages for every regulatory fact on the site. Templates read from here, so updating a 'verified' date here updates every page that cites it. Only record a url after opening it and confirming the page is live. 'page_updated' is the date the regulator's own page last changed, as shown on that page.",
+  "s19ab": {
+    "label": "Section 19AB restricted doctors and access to Medicare, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, section 19AB",
+    "url": "https://www.health.gov.au/topics/medicare/access-practitioners-industry/doctors-and-specialists/19ab",
+    "verified": "2026-09-14",
+    "page_updated": "2025-05-29"
+  },
+  "s19ab_moratorium": {
+    "label": "10-year moratorium and scaling, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, 10-year moratorium and scaling",
+    "url": "https://www.health.gov.au/topics/doctors-and-specialists/what-we-do/19ab/moratorium",
+    "verified": "2026-09-14",
+    "page_updated": "2025-05-29"
+  },
+  "s19ab_exemptions": {
+    "label": "Section 19AB exemptions, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, section 19AB exemptions",
+    "url": "https://www.health.gov.au/topics/doctors-and-specialists/what-we-do/19ab/exemptions",
+    "verified": "2026-09-14",
+    "page_updated": "2025-03-12"
+  },
+  "s19aa": {
+    "label": "Specialist registration requirements under section 19AA, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, section 19AA",
+    "url": "https://www.health.gov.au/topics/medicare/access-practitioners-industry/doctors-and-specialists/19aa",
+    "verified": "2026-09-14",
+    "page_updated": "2024-12-03"
+  },
+  "dpa": {
+    "label": "Distribution Priority Area, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, Distribution Priority Area",
+    "url": "https://www.health.gov.au/topics/rural-health-workforce/classifications/dpa",
+    "verified": "2026-09-14",
+    "page_updated": "2026-01-29"
+  },
+  "mmm": {
+    "label": "Modified Monash Model, Department of Health, Disability and Ageing",
+    "short": "Department of Health, Disability and Ageing, Modified Monash Model",
+    "url": "https://www.health.gov.au/topics/rural-health-workforce/classifications/mmm",
+    "verified": "2026-09-14",
+    "page_updated": "2025-04-10"
+  },
+  "locator": {
+    "label": "Health Workforce Locator, Department of Health, Disability and Ageing",
+    "short": "Health Workforce Locator",
+    "url": "https://www.health.gov.au/resources/apps-and-tools/health-workforce-locator",
+    "verified": "2026-09-14",
+    "page_updated": "2026-01-29"
+  },
+  "supervision": {
+    "label": "Supervision of international medical graduates, Medical Board of Australia",
+    "short": "Medical Board of Australia, Supervision",
+    "url": "https://www.medicalboard.gov.au/Registration/International-Medical-Graduates/Supervision.aspx",
+    "verified": "2026-09-14",
+    "page_updated": ""
+  },
+  "pesci": {
+    "label": "Pre-employment structured clinical interview (PESCI), Medical Board of Australia",
+    "short": "Medical Board of Australia, PESCI",
+    "url": "https://www.medicalboard.gov.au/Registration/International-Medical-Graduates/pesci",
+    "verified": "2026-09-14",
+    "page_updated": ""
+  }
+}

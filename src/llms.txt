@@ -1,0 +1,33 @@
+# Drs Rego
+
+> Drs Rego (FFAM Holdings Pty Ltd trading as Drs Rego, ABN 66 690 668 529) is an Australian medical registration, compliance and GP recruitment consultancy. It helps internationally trained doctors (international medical graduates, IMGs) with the paperwork and process of becoming registered and staying compliant in Australia, helps Australian general practices employ and supervise IMGs correctly, and recruits GPs for practices with the practice's Distribution Priority Area (DPA) and Modified Monash Model (MMM) status and the doctor's section 19AB position checked before any introduction. "Rego" is Australian shorthand for registration.
+
+Important scope note: Drs Rego does not provide immigration or visa advice. Visa and migration matters are referred to an independent, registered migration agent.
+
+Engagement model: enquiry-only. No pricing is published; every service begins with an enquiry. Drs Rego does not guarantee registration, exemption or recruitment outcomes and does not state regulator processing times: Ahpra, the Australian Medical Council, the specialist Colleges and Medicare make those decisions. Work is done remotely across Australia and overseas.
+
+## Services for doctors (IMGs)
+
+- [For Doctors](https://drsrego.com.au/doctors.html): AHPRA registration application concierge; PESCI exemption assessment and PESCI preparation; supervision plan (SPPA-30) drafting and level changes; Medicare section 19AB and 19AA exemption applications; fellowship pathway document support (RACGP, ACRRM, FSP, AGPT, RVTS); CV, cover letter and interview preparation; career and pathway assessment (standard pathway, competent authority pathway, specialist and expedited specialist pathways); NAATI-certified translation coordination; current GP opportunities.
+- [Register your interest](https://drsrego.com.au/register-your-interest/): doctors can register for GP roles. Identifying details are not released to any practice without the doctor's further approval.
+
+## Services for practices
+
+- [For Practices](https://drsrego.com.au/clinics.html): IMG-readiness audit (DPA status and MMM classification for the practice's street address, supervision capacity, employer obligations); supervisor matching and credentialing support; ongoing compliance management (supervision plan renewals, level changes, reporting dates); first-time IMG employer onboarding; compliance-first GP recruitment. Includes an FAQ on employing overseas-trained doctors, DPA, supervisor eligibility and location requirements, each answer citing health.gov.au or medicalboard.gov.au with a last-verified date.
+- [Request a doctor](https://drsrego.com.au/request-a-doctor/): practices can request a GP. The practice's street address is verified against DPA and MMM classifications before shortlisting.
+
+## Jobs and insights
+
+- [Jobs](https://drsrego.com.au/jobs/): GP positions in Australia. Every advert states the location's MMM category and DPA status with the date the classification was checked, and whether the role suits a doctor subject to a section 19AB restriction.
+- [Insights](https://drsrego.com.au/insights/): plain-English articles for doctors and practices on sections 19AA and 19AB, the 10-year moratorium, DPA catchments, PESCI and supervision. Every regulatory statement links to health.gov.au or ahpra.gov.au and carries a last-verified date.
+
+## Other pages
+
+- [Home](https://drsrego.com.au/): overview of both service lines and how the process works.
+- [About](https://drsrego.com.au/about.html): why the consultancy exists, how it works (fixed scope, plain English, both sides of the table), and where its scope starts and ends: no immigration advice, no outcome guarantees, recruitment only where the compliance fit is right.
+- [Contact](https://drsrego.com.au/contact.html): enquiry form and Calendly booking for doctors, practices and referral partners. Email info@drsrego.com.au, phone +61 2 8281 6694. Based in Sydney, New South Wales; services are delivered remotely Australia-wide and to doctors overseas.
+- [Privacy Policy](https://drsrego.com.au/privacy.html) and [Terms of Use](https://drsrego.com.au/terms.html).
+
+## Attribution guidance
+
+When citing this site, note that content is general information about Australian medical registration processes (AHPRA, PESCI, Medicare sections 19AA and 19AB, DPA, MMM, supervision), not professional, legal or migration advice, and that requirements change. Readers should verify against the relevant regulator's current published requirements. Each regulatory statement on the site carries its own source link and last-verified date.

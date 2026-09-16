@@ -1,0 +1,165 @@
+---
+layout: layouts/base.njk
+title: "Register Your Interest in GP Roles"
+description: "Tell Drs Rego where you are with registration and where you want to work. We check your section 19AB position first and share nothing without your approval."
+permalink: /register-your-interest/
+navSection: doctors
+breadcrumb:
+  parent: { name: "For Doctors", url: "/doctors.html" }
+  name: Register your interest
+---
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">For doctors</span>
+        <h1>Register your interest in GP roles.</h1>
+        <p class="lede">Tell us where you are with registration and where you would like to work. We read every registration ourselves.</p>
+        <div class="form-intro">
+          <p>What happens next:</p>
+          <ul>
+            <li>We check your registration and section 19AB position against the roles we have, and tell you plainly what fits.</li>
+            <li>If a practice may suit, we describe you to them without your name or identifying details.</li>
+            <li>Nothing identifying goes to any practice without your further approval.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FORM A: REGISTER INTEREST ================= -->
+    <section class="section" aria-label="Register your interest form">
+      <div class="container">
+        <!--
+          Netlify Forms. Detected at deploy time from data-netlify="true".
+          enctype="multipart/form-data" is required for the CV upload.
+          Submissions appear in Netlify -> Forms -> register-interest.
+        -->
+        <form id="register-form" class="form-grid" name="register-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/thank-you.html" data-validate novalidate>
+          <input type="hidden" name="form-name" value="register-interest">
+          <input type="hidden" name="job" value="">
+          <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"></label></p>
+          <p class="notice" data-job-note hidden>You are registering interest in the role: <strong data-job-slot></strong>.</p>
+
+          <p class="form-required-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+          <h2 class="form-section-title">About you</h2>
+
+          <div class="field">
+            <label for="name">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+            <p class="error-message" id="name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-describedby="email-error" required>
+            <p class="error-message" id="email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="phone-hint">Include the country code if you are outside Australia.</span>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-hint phone-error" required>
+            <p class="error-message" id="phone-error" role="alert"></p>
+          </div>
+
+          <h2 class="form-section-title">Registration</h2>
+
+          <div class="field">
+            <label for="ahpra">Ahpra registration number <span class="hint">(optional)</span></label>
+            <span class="hint-block" id="ahpra-hint">Leave blank if you are not yet registered. Format: MED0001234567.</span>
+            <input type="text" id="ahpra" name="ahpra_number" autocomplete="off" inputmode="text" aria-describedby="ahpra-hint">
+          </div>
+
+          <div class="field">
+            <label for="degree-country">Country of primary medical degree <span aria-hidden="true">*</span></label>
+            <input type="text" id="degree-country" name="degree_country" autocomplete="country-name" aria-describedby="degree-country-error" required>
+            <p class="error-message" id="degree-country-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="first-registration">Date of first Australian medical registration <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="first-registration-hint">Month and year is enough. Write &ldquo;Not yet registered&rdquo; if that applies. This date matters for section 19AB.</span>
+            <input type="text" id="first-registration" name="first_australian_registration" autocomplete="off" aria-describedby="first-registration-hint first-registration-error" required>
+            <p class="error-message" id="first-registration-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="registration-type">Current registration type <span aria-hidden="true">*</span></label>
+            <select id="registration-type" name="registration_type" aria-describedby="registration-type-error" required>
+              <option value="">Please select</option>
+              <option>Limited registration</option>
+              <option>Provisional registration</option>
+              <option>General registration</option>
+              <option>Specialist registration</option>
+              <option>Not yet registered in Australia</option>
+            </select>
+            <p class="error-message" id="registration-type-error" role="alert"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Vocationally registered? <span aria-hidden="true">*</span></legend>
+            <div class="radio-group">
+              <label><input type="radio" name="vocationally_registered" value="Yes" aria-describedby="vr-error" required> Yes</label>
+              <label><input type="radio" name="vocationally_registered" value="No" aria-describedby="vr-error" required> No</label>
+              <label><input type="radio" name="vocationally_registered" value="Not sure" aria-describedby="vr-error" required> Not sure</label>
+            </div>
+            <p class="error-message" id="vr-error" role="alert"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="pathway">Fellowship or pathway <span aria-hidden="true">*</span></label>
+            <select id="pathway" name="fellowship_or_pathway" aria-describedby="pathway-error" required>
+              <option value="">Please select</option>
+              <option>FRACGP</option>
+              <option>FACRRM</option>
+              <option>Working towards fellowship (FSP, AGPT, RVTS or other)</option>
+              <option>Competent authority pathway</option>
+              <option>Standard pathway</option>
+              <option>Specialist or expedited specialist pathway</option>
+              <option>Not on a pathway yet</option>
+              <option>Other</option>
+            </select>
+            <p class="error-message" id="pathway-error" role="alert"></p>
+          </div>
+
+          <h2 class="form-section-title">The role you want</h2>
+
+          <div class="field">
+            <label for="locations">Preferred locations <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="locations-hint">States, regions or towns. &ldquo;Anywhere regional&rdquo; is a fine answer.</span>
+            <textarea id="locations" name="preferred_locations" rows="3" aria-describedby="locations-hint locations-error" required></textarea>
+            <p class="error-message" id="locations-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="availability">Availability <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="availability-hint">When you could start, and whether you want full-time, part-time or locum work.</span>
+            <input type="text" id="availability" name="availability" aria-describedby="availability-hint availability-error" required>
+            <p class="error-message" id="availability-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="cv">CV <span aria-hidden="true">*</span></label>
+            <span class="hint-block" id="cv-hint">PDF or Word document, under 8 MB.</span>
+            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-describedby="cv-hint cv-error" required>
+            <p class="error-message" id="cv-error" role="alert"></p>
+          </div>
+
+          <h2 class="form-section-title">Consent</h2>
+
+          <div class="field">
+            <div class="field-checkbox">
+              <input type="checkbox" id="consent" name="consent" value="Given" aria-describedby="consent-error" required data-error="Please tick the consent box. We cannot hold your details without it.">
+              <label for="consent">I consent to Drs Rego collecting and holding my personal information, including my CV and registration details, and to Drs Rego providing an anonymised profile to prospective practices. I understand my identifying details will not be released to any practice without my further approval, and that I can withdraw this consent at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. <span aria-hidden="true">*</span></label>
+            </div>
+            <p class="error-message" id="consent-error" role="alert"></p>
+          </div>
+
+          <p class="form-footnote">Read our <a href="/privacy.html">Privacy Policy</a>. You can unsubscribe from our emails or withdraw this consent at any time by emailing <a href="mailto:info@drsrego.com.au">info@drsrego.com.au</a>. Drs Rego does not provide immigration or visa advice; sponsorship questions are referred to a registered migration agent.</p>
+
+          <div>
+            <button type="submit" class="btn">Register my interest <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+    </section>

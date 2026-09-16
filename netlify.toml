@@ -1,0 +1,23 @@
+# netlify.toml: instructions Netlify reads every time it deploys this repo.
+# Settings in this file take priority over the same settings in the Netlify dashboard.
+
+[build]
+  # Eleventy turns the files in src/ into the finished website in _site/.
+  # "npm test" runs the content validator, then Eleventy, then the built-site checker.
+  command = "npm test"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Keep Netlify's "Pretty URLs" switched on, as it has been since launch.
+# It lets visitors use drsrego.com.au/doctors instead of /doctors.html and
+# rewrites the site's internal links to match at deploy time.
+[build.processing.html]
+  pretty_urls = true
+
+# Also handled elsewhere:
+# - Netlify Forms: forms are detected automatically from the built HTML.
+# - 404 page: Netlify serves 404.html automatically.
+# - www -> non-www and http -> https redirects: domain settings in the dashboard.
+# - Security headers and old-address redirects: src/static/_headers and src/static/_redirects.

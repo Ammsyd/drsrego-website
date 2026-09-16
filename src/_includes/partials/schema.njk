@@ -1,0 +1,77 @@
+{#- Structured data chosen by the page's schemaType front matter.
+    "job"     : JobPosting for an open role (nothing for filled/closed)
+    "jobList" : ItemList of open roles on /jobs/
+    "article" : Article for an Insights post -#}
+{%- if schemaType == "job" and status == "open" %}
+{%- set employmentType = { "Locum": "TEMPORARY", "Part-time": "PART_TIME", "Full-time": "FULL_TIME", "Contract": "CONTRACTOR" }[type] %}
+{%- set jobPosting = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": title,
+  "description": jobDescriptionHtml,
+  "datePosted": posted | isoDate,
+  "validThrough": (closes | isoDate) ~ "T23:59:59+10:00",
+  "employmentType": employmentType,
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": site.name,
+    "sameAs": site.url ~ "/",
+    "logo": site.url ~ "/assets/img/logo-blue.svg"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": suburb,
+      "addressRegion": state,
+      "postalCode": postcode,
+      "addressCountry": "AU"
+    }
+  },
+  "identifier": { "@type": "PropertyValue", "name": site.name, "value": slug },
+  "industry": "Healthcare",
+  "occupationalCategory": "General Practitioner",
+  "directApply": false,
+  "url": page.url | absoluteUrl(site.url)
+} %}
+
+  <!-- Structured data: JobPosting (open roles only) -->
+  <script type="application/ld+json">
+{{ jobPosting | jsonld | safe }}
+  </script>
+{%- elif schemaType == "jobList" and collections.openJobs.length %}
+{%- set items = [] %}
+{%- for job in collections.openJobs %}
+  {%- set _ = items.push({ "@type": "ListItem", "position": loop.index, "url": job.url | absoluteUrl(site.url), "name": job.data.title }) %}
+{%- endfor %}
+
+  <!-- Structured data: list of open roles -->
+  <script type="application/ld+json">
+{{ { "@context": "https://schema.org", "@type": "ItemList", "itemListElement": items } | jsonld | safe }}
+  </script>
+{%- elif schemaType == "article" %}
+{%- set article = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": date | isoDate,
+  "dateModified": (last_verified or date) | isoDate,
+  "author": { "@type": "Person", "name": site.author, "url": site.url ~ "/about.html" },
+  "publisher": {
+    "@type": "Organization",
+    "name": site.name,
+    "url": site.url ~ "/",
+    "logo": { "@type": "ImageObject", "url": site.url ~ "/assets/img/logo-blue.svg" }
+  },
+  "image": (image or site.defaultImage) | absoluteUrl(site.url),
+  "mainEntityOfPage": { "@type": "WebPage", "@id": page.url | absoluteUrl(site.url) },
+  "inLanguage": "en-AU",
+  "articleSection": "For doctors" if category == "doctors" else "For practices"
+} %}
+
+  <!-- Structured data: Article -->
+  <script type="application/ld+json">
+{{ article | jsonld | safe }}
+  </script>
+{%- endif %}
