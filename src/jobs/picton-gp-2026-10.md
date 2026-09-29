@@ -23,11 +23,9 @@ status: open
 
 -70% billing split
 
--Income potential (VR rate): ~$75/patient weekdays, ~$105/patient weekends (6-min consults), e.g. 40 weekend patients ≈ $4,000/day
+-Guaranteed income for the first 3 months
 
--Guaranteed income: $150/hour for the first 3 months
-
--Relocation allowance: $10,000
+-Relocation allowance
 
 -Visa support with the 482 process
 
