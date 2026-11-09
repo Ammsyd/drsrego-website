@@ -49,7 +49,7 @@ Whichever route you use, the rule is the same: **never edit `main` directly. Mak
    - `closes:` the last day for applications, same date format.
    - `description:` one sentence under 160 characters, no em dashes.
    - `draft:` change to `false` when you are ready to publish.
-5. Write the advert under the headings. No pay rates, no billing percentages, no promises about registration or provider numbers, no visa advice.
+5. Write the advert under the headings. You may state what the practice pays, but only as the practice reported it: name the date it was reported and say the practice confirms the terms in writing. Never a rate for our own services. No promises about registration or provider numbers, and no visa advice.
 6. Delete the lines that start with `#` (they are notes to you).
 7. Scroll down, choose **Create a new branch for this commit and start a pull request**, click **Propose changes**, then **Create pull request**.
 8. Wait for the netlify comment with the **Deploy Preview** link. Open it, go to `/jobs/`, and read your advert on your phone.

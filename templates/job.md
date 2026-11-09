@@ -27,8 +27,8 @@ draft: true                                          # change to false when the 
 ## About the role
 
 REPLACE: two or three short paragraphs. What the practice is, what the day looks like,
-who the patients are, what support is in place. No pay rates, no billing percentages,
-no promises about registration or provider numbers.
+who the patients are, what support is in place. If you state what the practice pays,
+attribute it to the practice and date it. No promises about registration or provider numbers.
 
 ## About the practice
 

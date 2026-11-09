@@ -36,11 +36,16 @@ The practice has been running since 2014 and has nine GPs. On site there are two
 What the practice says it offers:
 
 - An established patient base to take over from a departing doctor
-- Teaching of medical students and GP registrars
+- Teaching income for medical students and GP registrars
 - Skin cancer training and mentoring
 - A pathway to shareholding in the practice
 
-The practice offers a guaranteed hourly rate for the first six months, moving to a share of billings after that, and a bonus on completing a twelve-month full-time contract. The figures are discussed with you by the practice directly.
+The practice has reported the following terms, as at 9 November 2026:
+
+- A guaranteed $200 per hour plus GST for the first six months, then 70% of billings
+- A $5,000 bonus on completing a twelve-month full-time contract
+
+These figures come from the practice, not from Drs Rego. They are an indication of what is on offer, not an offer in themselves, and the practice confirms the terms with you in writing before you commit to anything.
 
 ## What the practice is looking for
 

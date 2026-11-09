@@ -28,7 +28,7 @@ draft: true
 
 This is an example advert used to preview the jobs board. It is not a real position and it is never published, because the file is marked as a draft.
 
-A real advert describes what the practice is, what a typical day looks like, who the patients are and what support is in place. It never states pay, billing percentages or any promise about registration or provider numbers.
+A real advert describes what the practice is, what a typical day looks like, who the patients are and what support is in place. Any pay it states is attributed to the practice and dated. It never promises anything about registration or provider numbers.
 
 ## About the practice
 
