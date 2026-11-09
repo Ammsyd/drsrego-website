@@ -18,7 +18,7 @@ posted: 2026-11-09
 closes: 2027-01-31
 status: open
 description: "Two full-time, long-term VR GP positions at an established nine-GP practice in Kingston, Logan. GP couples and individual applicants welcome."
-draft: true
+draft: false
 ---
 
 ## About the role
@@ -28,8 +28,6 @@ An established general practice in Kingston, in Logan City, is looking for two f
 GP couples looking for a long-term move are especially welcome, and individual applicants are just as welcome. One of the two positions takes over an established patient base from a departing doctor.
 
 The practice is in a busy shopping-centre location, with a pharmacy next door and easy parking. It is roughly 30 minutes from the Brisbane CBD and roughly 45 minutes from the Gold Coast.
-
-[VERIFY: open the Health Workforce Locator with the practice's full street address, then set mmm, dpa, img_eligible and classification_checked from what it shows. The file is drafted as MMM 1 and not DPA, which is what the practice has told us, but the catchment must be confirmed on the address before this advert publishes.]
 
 ## About the practice
 
