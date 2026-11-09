@@ -57,7 +57,8 @@ docs/archive/                historical reports, not maintained
 
 Apply to every word on the site, in templates, meta tags, structured data and docs.
 
-1. **No pricing anywhere, on any page.** Enquiry-only. No "from $X", no ranges, no indication.
+1. **No pricing for our own services, anywhere, on any page.** Enquiry-only. No "from $X", no ranges, no indication.
+   One exception, decided 9 November 2026: a job advert in `src/jobs/` may state the remuneration a practice has reported (hourly rate, billings percentage, bonus). It must be attributed to the practice, carry the date it was reported, and say that the practice confirms the terms in writing. The validator allows dollar amounts in `src/jobs/` only.
 2. **No outcome guarantees and no turnaround times.** Never say a registration "takes 8 weeks" or that we can "get you registered". Ahpra, the AMC, the Colleges and Medicare make those decisions.
 3. **No immigration or visa advice, and no implication that we provide it.** If visas or sponsorship come up anywhere, the copy says it is referred to a registered migration agent.
 4. **No regulatory fact stated without a source and a date.** Anything about DPA, MMM, section 19AA, section 19AB, PESCI or supervision must link to health.gov.au or ahpra.gov.au (the Medical Board pages live at medicalboard.gov.au, an Ahpra site, and count) and carry a "last verified" date. If not certain, write `[VERIFY: …]` and Faisal will check it. Do not guess and do not fill gaps from memory.
@@ -66,7 +67,7 @@ Apply to every word on the site, in templates, meta tags, structured data and do
 7. **The correct department name is Department of Health, Disability and Ageing.** Not "Health and Aged Care".
 8. **Every candidate-facing form carries a privacy link and an unsubscribe path.**
 
-The validator (`scripts/validate-content.js`) enforces what it can: em dashes, `[VERIFY:` markers in published files, the wrong department name, and dollar amounts in markdown. It fails the build with a plain-English message.
+The validator (`scripts/validate-content.js`) enforces what it can: em dashes, `[VERIFY:` markers in published files, the wrong department name, and dollar amounts in markdown outside `src/jobs/`. It fails the build with a plain-English message.
 
 ## Regulatory sourcing workflow
 
@@ -106,4 +107,5 @@ The validator (`scripts/validate-content.js`) enforces what it can: em dashes, `
 - 2026-09-16: Merged to main and live. Repository made public because Netlify's free plan blocks builds from private repositories by unverified contributors.
 - 2026-09-16: Added `/how-we-verify/` (the DPA and MMM method, a trust page) and `/supervisor-interest/` (supervisor expression of interest, the supply side of supervisor matching).
 - 2026-09-16: Google Analytics 4 added, switched off until an ID is set. Privacy policy updated to describe it. Lawyer-review notices removed from the privacy and terms pages.
+- 2026-11-09: First real job advert published (Kingston QLD, MMM 1, not DPA). Practice remuneration may now be stated in job adverts, attributed and dated. The no-pricing rule still applies in full to our own services.
 - 2026-09-16: Photos added to the jobs listing, insights listing and all form pages. Photos were checked visually before use: `gp-consult-room`, `gp-at-desk`, `doctor-desk-certificates`, `clinicians-review` (Unsplash, free licence). `clinic-interior` shows a dental surgery and must not be used. Job advert pages deliberately carry no photo, because a stock image on a specific vacancy implies a practice we are not showing.

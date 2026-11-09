@@ -160,6 +160,9 @@ for (const file of textFiles) {
   const text = fs.readFileSync(file, "utf8");
   const lines = text.split(/\r?\n/);
   const isMarkdown = file.endsWith(".md");
+  // A job advert may state the remuneration the practice has reported. Pricing for
+  // Drs Rego's own services is still not allowed anywhere. Decision, 9 November 2026.
+  const isJobAdvert = file.startsWith(jobsDir + path.sep);
   const { data } = isMarkdown ? readFrontMatter(file) : { data: null };
   const isDraft = Boolean(data && data.draft);
 
@@ -171,8 +174,8 @@ for (const file of textFiles) {
     if (/Health and Aged Care/.test(line)) {
       fail(file, `line ${n} says "Health and Aged Care". The department is the Department of Health, Disability and Ageing.`);
     }
-    if (isMarkdown && /\$\s?\d/.test(line)) {
-      fail(file, `line ${n} contains a dollar amount. No pricing or rates may appear on the site.`);
+    if (isMarkdown && !isJobAdvert && /\$\s?\d/.test(line)) {
+      fail(file, `line ${n} contains a dollar amount. Pricing for our own services may not appear on the site. Only a job advert in src/jobs/ may state what a practice pays.`);
     }
     if (line.includes("[VERIFY") && !isDraft) {
       fail(file, `line ${n} still has a [VERIFY: ...] marker. Check the fact, remove the marker, then publish.${isMarkdown ? " (Or set draft: true to keep it unpublished.)" : ""}`);
